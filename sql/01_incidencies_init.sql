@@ -1,3 +1,5 @@
+USE gestorIncidencia;
+
 CREATE TABLE TIPUS (
     idTipus INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(200)
