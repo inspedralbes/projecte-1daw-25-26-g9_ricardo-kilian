@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$usuario = "a21ricsaagon_Admin";
-$contrasenia = "G9_Ric&&Kil";
-$base_de_datos = "a21ricsaagon_Gestor_incidències";
+$host = "db";
+$usuario = "admin";
+$contrasenia = "admin1234";
+$base_de_datos = "gestorIncidencia";
 $mysqli = new mysqli($host, $usuario, $contrasenia, $base_de_datos);
 if ($mysqli->connect_errno) {
     echo "Falló la conexión a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
