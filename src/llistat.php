@@ -1,6 +1,7 @@
 <?php
 $mysqli = include_once "connexio.php";
-$resultado = $mysqli->query("SELECT id, nombre, descripcion FROM videojuegos");
+$resultado = $mysqli->query("SELECT idIndidencia, descripcio, data, idDepartament
+, idTecnic,idTipus,dataFinalitzacio,  prioritat    FROM INCIDENCIA");
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
