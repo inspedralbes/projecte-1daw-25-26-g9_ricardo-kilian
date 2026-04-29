@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        <h1>Registrar videojuego</h1>
+        <h1>Registrar Incidencia</h1>
         <form action="registrar.php" method="POST">
             
             <!-- Descripció -->
@@ -16,7 +16,7 @@
                 <input type="number" name="idTipus" class="form-control" required>
             </div>
 
-            <!-- DEpartament -->
+            <!-- Departament -->
             <div class="form-group">
                 <label>ID Departamento</label>
                 <input type="number" name="idDepartament" class="form-control" required>

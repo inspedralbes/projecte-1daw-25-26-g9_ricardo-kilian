@@ -10,13 +10,13 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>descripcio</th>
-                    <th>data</th>
-                    <th>idDepartament</th>
-                    <th>idTecnic</th>
-                    <th>idTipus</th>
-                    <th>dataFinalitzacio</th>
-                    <th>prioritat</th>
+                    <th>Descripcio</th>
+                    <th>Data</th>
+                    <th>Departament</th>
+                    <th>Tecnic</th>
+                    <th>Tipus</th>
+                    <th>Finalitzacio</th>
+                    <th>Prioritat</th>
                     
                 </tr>
             </thead>
