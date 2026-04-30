@@ -1,15 +1,17 @@
 <?php
 $mysqli = include_once "connexio.php";
-$descripcio = $_POST["descripcio"];
-$idDepartament = $_POST["idDepartament"];
+$prioritat = $_POST["prioritat"];
+$idTecnic = $_POST["idTecnic"];
 $idTipus = $_POST["idTipus"];
 
+
 $sentencia = $mysqli->prepare("INSERT INTO INCIDENCIA
-(descripcio, idDepartament , idTipus)
+(prioritat, idTecnic , idTipus)
 VALUES
 (?, ? , ?)");
 $sentencia->bind_param("sss", $descripcio, $idDepartament , $idTipus);
 $sentencia->execute();
-$id = $mysqli ->query("SELECT LAST_INSERT_ID()")->fetch_row()[0];
+$idIncidencia = $mysqli ->query("SELECT LAST_INSERT_ID()")->fetch_row()[0];
 
-header("Location: aviso.php");
+header("Location: aviso.php?idIncidencia=" . $idIncidencia);
+exit;
