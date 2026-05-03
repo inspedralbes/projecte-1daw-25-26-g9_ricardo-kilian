@@ -2,7 +2,8 @@
 FROM php:8.2-apache
 
 # Instal·lar l'extensió mysqli per connectar amb MySQL
-RUN docker-php-ext-install mysqli
+RUN apt-get update && apt-get install -y libzip-dev \
+    && docker-php-ext-install mysqli
 
 # Habilitar visualització d'errors (només per desenvolupament)
 # Modifiquem el fitxer de configuració del PHP que estarà dins de la imatge

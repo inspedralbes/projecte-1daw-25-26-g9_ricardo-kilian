@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include './structure/header.php'; ?>
 
 <main class="container mt-4">
 
@@ -16,8 +16,8 @@
 
         <!-- ADMIN -->
         <div class="col-10 col-sm-4 col-md-3">
-            <a href="admin.html" class="rol-card">
-                <img src="../src/photos/admin.jpg" class="rol-img" alt="Admin">
+            <a href="../admin.php" class="rol-card">
+                <img src="../photos/admin.jpg" class="rol-img" alt="Admin">
                 <div class="overlay"></div>
                 <span class="rol-label">ADMIN</span>
             </a>
@@ -25,8 +25,8 @@
 
         <!-- TÈCNIC -->
         <div class="col-10 col-sm-4 col-md-3">
-            <a href="tecnic.html" class="rol-card">
-                <img src="../src/photos/tecnic.jpg" class="rol-img" alt="Tècnic">
+            <a href="../tecnic.php" class="rol-card">
+                <img src="../photos/tecnic.jpg" class="rol-img" alt="Tècnic">
                 <div class="overlay"></div>
                 <span class="rol-label">TÈCNIC</span>
             </a>
@@ -34,8 +34,8 @@
 
         <!-- USUARI -->
         <div class="col-10 col-sm-4 col-md-3">
-            <a href="usuari.html" class="rol-card">
-                <img src="../src/photos/user.jpg" class="rol-img" alt="Usuari">
+            <a href="../usuari.php" class="rol-card">
+                <img src="../photos/user.jpg" class="rol-img" alt="Usuari">
                 <div class="overlay"></div>
                 <span class="rol-label">USER</span>
             </a>
@@ -45,4 +45,4 @@
 
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include './structure/footer.php'; ?>
