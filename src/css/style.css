@@ -109,6 +109,61 @@ main {
     text-shadow: 0 2px 6px rgba(0,0,0,0.6);
 }
 
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: rgb(73, 255, 97);
+    padding: 8px 12px;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
+.user-box img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.user-box span {
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-box img:hover {
+    transform: scale(1.1);
+}
+
+.user-box-admin {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: rgb(255, 17, 17);
+    padding: 8px 12px;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.user-box-admin img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.user-box-admin span {
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-box-admin img:hover {
+    transform: scale(1.1);
+}
+
 /* altura responsive */
 @media (min-width: 992px) {
     .rol-card {

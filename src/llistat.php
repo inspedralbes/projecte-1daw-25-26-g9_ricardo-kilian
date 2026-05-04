@@ -1,12 +1,35 @@
-<?php include './structure/header.php'; ?>
+<?php include './structure/header.php'; 
 
-<?php
 $mysqli = include_once "connexio.php";
-$resultado = $mysqli->query("SELECT idIncidencia, descripcio, data, idDepartament, idTecnic, idTipus, dataFinalitzacio, prioritat FROM INCIDENCIA");
+
+$resultado = $mysqli->query("
+    SELECT 
+        i.idIncidencia,
+        i.descripcio,
+        i.data,
+        d.nom AS departament,
+        t.nom AS tecnic,
+        tp.nom AS tipus,
+        i.dataFinalitzacio,
+        i.prioritat
+    FROM INCIDENCIA i
+    LEFT JOIN DEPARTAMENT d ON i.idDepartament = d.idDepartament
+    LEFT JOIN TECNIC t ON i.idTecnic = t.idTecnic
+    LEFT JOIN TIPUS tp ON i.idTipus = tp.idTipus
+");
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <main class="container mt-5">
+
+    <div class="user-bar container-fluid">
+            <div class="d-flex justify-content-end">
+                <div class="user-box">
+                    <span>USUARI</span> 
+                    <img src="../photos/user.jpg" alt="Usuario">
+                </div>
+            </div>
+    </div>
 
     <h1 class="mb-4 text-center">Llistat d'Incidències</h1>
 
@@ -30,9 +53,9 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                         <td><?php echo $incidencia["idIncidencia"] ?></td>
                         <td><?php echo $incidencia["descripcio"] ?></td>
                         <td><?php echo $incidencia["data"] ?></td>
-                        <td><?php echo $incidencia["idDepartament"] ?></td>
-                        <td><?php echo $incidencia["idTecnic"] ?></td>
-                        <td><?php echo $incidencia["idTipus"] ?></td>
+                        <td><?php echo $incidencia["departament"] ?></td>
+                        <td><?php echo $incidencia["tecnic"] ?></td>
+                        <td><?php echo $incidencia["tipus"] ?></td>
                         <td><?php echo $incidencia["dataFinalitzacio"] ?></td>
                         <td><?php echo $incidencia["prioritat"] ?></td>
                     </tr>

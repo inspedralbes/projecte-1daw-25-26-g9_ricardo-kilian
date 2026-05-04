@@ -1,6 +1,15 @@
 <?php include './structure/header.php'; ?>
 
 <main class="container mt-4">
+    
+    <div class="user-bar container-fluid">
+        <div class="d-flex justify-content-end">
+            <div class="user-box">
+                <span>Usuari</span> 
+                <img src="../photos/user.jpg" alt="Usuario">
+            </div>
+        </div>
+    </div>
 
     <div class="inici_Usuari text-center">
         <h1>Gestio d'Incidencies</h1>

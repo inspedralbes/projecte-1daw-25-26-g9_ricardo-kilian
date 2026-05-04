@@ -1,6 +1,25 @@
-<?php include './structure/header.php'; ?>
+<?php include './structure/header.php'; 
+
+$mysqli = include_once "connexio.php";
+
+$llistatTipus = $mysqli->query("SELECT idTipus, nom FROM TIPUS");
+$tipus = $llistatTipus->fetch_all(MYSQLI_ASSOC);
+
+$llistatDept = $mysqli->query("SELECT idDepartament, nom FROM DEPARTAMENT");
+$departaments = $llistatDept->fetch_all(MYSQLI_ASSOC);
+
+?>
 
 <main class="container mt-5">
+
+    <div class="user-bar container-fluid">
+            <div class="d-flex justify-content-end">
+                <div class="user-box">
+                    <span>Usuari</span> 
+                    <img src="../photos/user.jpg" alt="Usuario">
+                </div>
+            </div>
+    </div>
 
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
@@ -18,14 +37,32 @@
 
                 <!-- Tipus -->
                 <div class="mb-3">
-                    <label class="form-label">ID Tipus</label>
-                    <input type="number" name="idTipus" class="form-control" required>
+                    <label class="form-label">Tipus</label>
+                    <select name="idTipus" class="form-control" required>
+                        <option value="">-- Selecciona un tipus --</option>
+
+                        <?php foreach ($tipus as $t): ?>
+                            <option value="<?php echo $t['idTipus']; ?>">
+                                <?php echo $t['nom']; ?>
+                            </option>
+                        <?php endforeach; ?>
+
+                    </select>
                 </div>
 
                 <!-- Departament -->
                 <div class="mb-3">
-                    <label class="form-label">ID Departament</label>
-                    <input type="number" name="idDepartament" class="form-control" required>
+                    <label class="form-label">Departament</label>
+                    <select name="idDepartament" class="form-control" required>
+                        <option value="">-- Selecciona un departament --</option>
+
+                        <?php foreach ($departaments as $dept): ?>
+                            <option value="<?php echo $dept['idDepartament']; ?>">
+                                <?php echo $dept['nom']; ?>
+                            </option>
+                        <?php endforeach; ?>
+
+                    </select>
                 </div>
 
                 <!-- Botón -->
