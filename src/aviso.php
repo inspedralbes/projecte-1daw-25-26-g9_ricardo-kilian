@@ -1,3 +1,6 @@
+
+<?php include './structure/header.php'; ?>
+
 <?php
 $idIncidencia = $_GET["idIncidencia"] ?? null;
 
@@ -7,7 +10,6 @@ if ($idIncidencia === null) {
 }
 ?>
 
-<?php include_once "header.php"; ?>
 
 <div class="row">
     <div class="col-12">
