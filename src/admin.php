@@ -1,6 +1,6 @@
 <?php include './structure/header.php'; ?>
 
-<main class="container mt-4">
+<main class="container mt-4 admin-bg">
 
     <div class="user-bar container-fluid">
                 <div class="d-flex justify-content-end">

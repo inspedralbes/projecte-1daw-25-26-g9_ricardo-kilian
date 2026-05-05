@@ -164,6 +164,18 @@ main {
     transform: scale(1.1);
 }
 
+.accion-card {
+    border: none;
+    border-radius: 15px;
+    transition: all 0.25s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.accion-card:hover {
+    transform: translateY(-8px); /* 👈 lo que querías mantener */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
 /* altura responsive */
 @media (min-width: 992px) {
     .rol-card {

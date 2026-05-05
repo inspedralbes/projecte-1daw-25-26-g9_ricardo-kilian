@@ -31,8 +31,7 @@ $departaments = $llistatDept->fetch_all(MYSQLI_ASSOC);
                 <!-- Descripció -->
                 <div class="mb-3">
                     <label for="descripcio" class="form-label">Descripció</label>
-                    <textarea placeholder="Descripció" class="form-control" name="descripcio" id="descripcio" rows="5" required>
-                    </textarea>
+                    <textarea placeholder="Descripció" class="form-control" name="descripcio" id="descripcio" rows="5" required> </textarea>
                 </div>
 
                 <!-- Tipus -->
