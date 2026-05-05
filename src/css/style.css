@@ -176,6 +176,29 @@ main {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
+.menu-bar {
+    background-color: #9ec5fe; /* un azul un poco más oscuro */
+    padding: 12px 0;
+    border-bottom: 2px solid #7fb0fc;
+    margin-bottom: 20px;
+}
+
+.menu-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    background-color: #cfe2ff;
+    color: #0d6efd;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.menu-btn:hover {
+    background-color: #b6d4fe;
+    transform: translateY(-2px); /* el efecto que te gusta */
+}
+
 /* altura responsive */
 @media (min-width: 992px) {
     .rol-card {

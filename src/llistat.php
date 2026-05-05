@@ -22,14 +22,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
 <main class="container mt-5">
 
-    <div class="user-bar container-fluid">
-            <div class="d-flex justify-content-end">
-                <div class="user-box">
-                    <span>USUARI</span> 
-                    <img src="../photos/user.jpg" alt="Usuario">
-                </div>
-            </div>
-    </div>
+    <?php include './structure/userStructure/navBarUser.php'; ?>
 
     <h1 class="mb-4 text-center">Llistat d'Incidències</h1>
 

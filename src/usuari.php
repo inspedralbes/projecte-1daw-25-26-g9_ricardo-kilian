@@ -2,17 +2,10 @@
 
 <main class="container mt-4">
     
-    <div class="user-bar container-fluid">
-        <div class="d-flex justify-content-end">
-            <div class="user-box">
-                <span>Usuari</span> 
-                <img src="../photos/user.jpg" alt="Usuario">
-            </div>
-        </div>
-    </div>
+    <?php include './structure/userStructure/navBarUser.php'; ?>
 
     <div class="inici_Usuari text-center">
-        <h1 class="mb-4">Gestio d'Incidencies</h1>
+        <h1 class="mb-4">PANELL ACCIONS</h1>
 
         <div class="row g-4 justify-content-center">
 

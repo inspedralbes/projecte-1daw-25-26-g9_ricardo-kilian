@@ -12,14 +12,7 @@ $departaments = $llistatDept->fetch_all(MYSQLI_ASSOC);
 
 <main class="container mt-5">
 
-    <div class="user-bar container-fluid">
-            <div class="d-flex justify-content-end">
-                <div class="user-box">
-                    <span>Usuari</span> 
-                    <img src="../photos/user.jpg" alt="Usuario">
-                </div>
-            </div>
-    </div>
+    <?php include './structure/userStructure/navBarUser.php'; ?>
 
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
