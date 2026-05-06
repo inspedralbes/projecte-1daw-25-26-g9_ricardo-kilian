@@ -1,14 +1,14 @@
-<?php include './structure/header.php'; ?>
+<?php include '../../structure/header.php'; ?>
 
 <?php
-$mysqli = include_once "connexio.php";
+$mysqli = include_once "../../connexio.php";
 $resultado = $mysqli->query("SELECT idIncidencia, descripcio, data, idDepartament,
 idTecnic, idTipus, dataFinalitzacio, prioritat FROM INCIDENCIA");
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <main class="container mt-5">
-
+    <?php include '../../structure/adminStructure/navBarAdmin.php'; ?>
     <h1 class="mb-4 text-center">Llistat d'Incidències</h1>
 
     <div class="table-responsive">
@@ -54,4 +54,5 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
 </main>
 
-<?php include './structure/footer.php'; ?>
+<?php include '../../structure/logOut.php'; ?>
+<?php include '../../structure/footer.php'; ?>

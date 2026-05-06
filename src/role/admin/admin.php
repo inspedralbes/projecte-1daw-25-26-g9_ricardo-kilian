@@ -2,14 +2,7 @@
 
 <main class="container mt-4 admin-bg">
 
-    <div class="user-bar container-fluid">
-                <div class="d-flex justify-content-end">
-                    <div class="user-box-admin">
-                        <span>ADMIN</span> 
-                        <img src="../photos/admin.jpg" alt="Admin">
-                    </div>
-                </div>
-    </div>
+    <?php include '../../structure/adminStructure/navBarAdmin.php'; ?>
 
     <div class="inici_Admin text-center">
         <h1>Gestio d'Incidencies</h1>
@@ -21,5 +14,5 @@
     </div>  
 
 </main>
-
+<?php include '../../structure/logOut.php'; ?>
 <?php include '../../structure/footer.php'; ?>
