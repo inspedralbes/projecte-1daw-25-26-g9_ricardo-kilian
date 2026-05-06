@@ -4,6 +4,10 @@ Aquest projecte és un sistema de gestió d'incidències informàtiques creat en
 
 ## Descripció del projecte
 
+Abans de tot, hem preparat el diagrama de cas d'us:
+
+![Cas d'ús](src/photos/PROJECTE_RICARDO&&KILIAN.jpg)
+
 L'aplicació permet registrar i gestionar incidències informàtiques, amb les següents funcionalitats:
 
 1. **Registrar nova incidència**: Els usuaris poden registrar noves incidències amb el seu departament, la data i una breu descripció del problema.
@@ -58,7 +62,7 @@ L'aplicació permet visualitzar estadístiques detallades sobre els accessos, le
 - **Docker**: Per executar l'aplicació en un entorn aïllat amb Docker Compose.
 - **Adminer**: Eina per gestionar la base de dades a través de la interfície web.
 - **Bootstrap**: Per a dissenyar una interfície responsive i visualment atractiva.
-- **Penpot**: Disseny de prototips i fluxos de l'aplicació. -> https://design.penpot.app/#/view?file-id=c13b245b-18ea-8002-8007-ef6735605de1&page-id=c13b245b-18ea-8002-8007-ef6735605de2&section=interactions&index=0
+- **Penpot**: Disseny de prototips i fluxos de l'aplicació. -> https://design.penpot.app/#/view?file-id=c13b245b-18ea-8002-8007-ef6735605de1&page-id=c13b245b-18ea-8002-8007-ef6735605de2&section=interactions&index=0&share-id=6563c06e-a669-801f-8007-f93addb355f2
 
 ## Instal·lació
 
