@@ -6,7 +6,7 @@ Aquest projecte és un sistema de gestió d'incidències informàtiques creat en
 
 Abans de tot, hem preparat el diagrama de cas d'us:
 
-<img src="src/photos/PROJECTE_RICARDO&&KILIAN.jpg" alt="Diagrama cas d'ús" width="200" height="100">
+<img src="src/photos/PROJECTE_RICARDO&&KILIAN.jpg" alt="Diagrama cas d'ús" width="500" height="350">
 L'aplicació permet registrar i gestionar incidències informàtiques, amb les següents funcionalitats:
 
 1. **Registrar nova incidència**: Els usuaris poden registrar noves incidències amb el seu departament, la data i una breu descripció del problema.
