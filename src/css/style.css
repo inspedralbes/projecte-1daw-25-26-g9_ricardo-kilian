@@ -133,9 +133,6 @@ main {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.user-box img:hover {
-    transform: scale(1.1);
-}
 
 .user-box-admin {
     display: flex;

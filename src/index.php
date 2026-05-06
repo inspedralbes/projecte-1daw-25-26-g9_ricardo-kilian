@@ -16,7 +16,7 @@
 
         <!-- ADMIN -->
         <div class="col-10 col-sm-4 col-md-3">
-            <a href="../admin.php" class="rol-card">
+            <a href="./role/admin/admin.php" class="rol-card">
                 <img src="../photos/admin.jpg" class="rol-img" alt="Admin">
                 <div class="overlay"></div>
                 <span class="rol-label">ADMIN</span>
@@ -25,7 +25,7 @@
 
         <!-- TÈCNIC -->
         <div class="col-10 col-sm-4 col-md-3">
-            <a href="../tecnic.php" class="rol-card">
+            <a href="./role/tecnic/tecnic.php" class="rol-card">
                 <img src="../photos/tecnic.jpg" class="rol-img" alt="Tècnic">
                 <div class="overlay"></div>
                 <span class="rol-label">TÈCNIC</span>
@@ -34,7 +34,7 @@
 
         <!-- USUARI -->
         <div class="col-10 col-sm-4 col-md-3">
-            <a href="../usuari.php" class="rol-card">
+            <a href="./role/user/usuari.php" class="rol-card">
                 <img src="../photos/user.jpg" class="rol-img" alt="Usuari">
                 <div class="overlay"></div>
                 <span class="rol-label">USER</span>

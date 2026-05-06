@@ -1,6 +1,6 @@
 <!-- BANDA MENÚ PRINCIPAL -->
 <div class="menu-bar text-center">
-    <a href="/usuari.php" class="menu-btn">
+    <a href="usuari.php" class="menu-btn">
         Menú principal
     </a>
 </div>

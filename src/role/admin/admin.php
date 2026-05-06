@@ -1,4 +1,4 @@
-<?php include './structure/header.php'; ?>
+<?php include '../../structure/header.php'; ?>
 
 <main class="container mt-4 admin-bg">
 
@@ -22,4 +22,4 @@
 
 </main>
 
-<?php include './structure/footer.php'; ?>
+<?php include '../../structure/footer.php'; ?>
