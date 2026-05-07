@@ -1,7 +1,7 @@
-<?php include './structure/header.php'; ?>
+<?php include '../../structure/header.php'; ?>
 
 <?php
-$mysqli = include_once "connexio.php";
+$mysqli = include_once "../../connexio.php";
 
 $idIncidencia = $_GET["idIncidencia"];
 
@@ -15,10 +15,10 @@ $tipus = $mysqli->query("SELECT idTipus, nom FROM TIPUS");
         <div class="col-12 col-md-6">
 
             <h2 class="mb-4 text-center">
-                Asignar incidencia #<?php echo $idIncidencia; ?>
+                Asignar incidència #<?php echo $idIncidencia; ?>
             </h2>
 
-            <form action="guardar_asignacion.php" method="POST">
+            <form action="assignmentSave.php" method="POST">
 
                 <input type="hidden" name="idIncidencia" value="<?php echo $idIncidencia; ?>">
 
@@ -26,7 +26,7 @@ $tipus = $mysqli->query("SELECT idTipus, nom FROM TIPUS");
                 <div class="mb-3">
                     <label class="form-label">Tècnic</label>
                     <select name="idTecnic" class="form-select" required>
-                        <option value="">Selecciona tècnic</option>
+                        <option value="">--Selecciona tècnic--</option>
                         <?php while ($tec = $tecnics->fetch_assoc()): ?>
                             <option value="<?php echo $tec["idTecnic"]; ?>">
                                 <?php echo $tec["nom"]; ?>
@@ -39,7 +39,7 @@ $tipus = $mysqli->query("SELECT idTipus, nom FROM TIPUS");
                 <div class="mb-3">
                     <label class="form-label">Tipus</label>
                     <select name="idTipus" class="form-select" required>
-                        <option value="">Selecciona tipus</option>
+                        <option value="">--Selecciona tipus--</option>
                         <?php while ($ti = $tipus->fetch_assoc()): ?>
                             <option value="<?php echo $ti["idTipus"]; ?>">
                                 <?php echo $ti["nom"]; ?>
@@ -51,7 +51,7 @@ $tipus = $mysqli->query("SELECT idTipus, nom FROM TIPUS");
                 <!-- Botón -->
                 <div class="d-grid">
                     <button type="submit" class="btn btn-success">
-                        Guardar asignación
+                        Guardar asignació
                     </button>
                 </div>
 
@@ -61,5 +61,5 @@ $tipus = $mysqli->query("SELECT idTipus, nom FROM TIPUS");
     </div>
 
 </main>
-
-<?php include './structure/footer.php'; ?>
+<?php include '../../structure/logOut.php'; ?>
+<?php include '../../structure/footer.php'; ?>

@@ -1,9 +1,22 @@
-<?php include '../../structure/header.php'; ?>
+<?php include '../../structure/header.php'; 
 
-<?php
 $mysqli = include_once "../../connexio.php";
-$resultado = $mysqli->query("SELECT idIncidencia, descripcio, data, idDepartament,
-idTecnic, idTipus, dataFinalitzacio, prioritat FROM INCIDENCIA");
+
+$resultado = $mysqli->query("
+    SELECT 
+        i.idIncidencia,
+        i.descripcio,
+        i.data,
+        d.nom AS departament,
+        t.nom AS tecnic,
+        tp.nom AS tipus,
+        i.dataFinalitzacio,
+        i.prioritat
+    FROM INCIDENCIA i
+    LEFT JOIN DEPARTAMENT d ON i.idDepartament = d.idDepartament
+    LEFT JOIN TECNIC t ON i.idTecnic = t.idTecnic
+    LEFT JOIN TIPUS tp ON i.idTipus = tp.idTipus
+");
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 
@@ -34,14 +47,14 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                         <td><?php echo $incidencia["idIncidencia"] ?></td>
                         <td><?php echo $incidencia["descripcio"] ?></td>
                         <td><?php echo $incidencia["data"] ?></td>
-                        <td><?php echo $incidencia["idDepartament"] ?></td>
-                        <td><?php echo $incidencia["idTecnic"] ?></td>
-                        <td><?php echo $incidencia["idTipus"] ?></td>
+                        <td><?php echo $incidencia["departament"] ?></td>
+                        <td><?php echo $incidencia["tecnic"] ?></td>
+                        <td><?php echo $incidencia["tipus"] ?></td>
                         <td><?php echo $incidencia["dataFinalitzacio"] ?></td>
                         <td><?php echo $incidencia["prioritat"] ?></td>
                         <td>
                             <a class="btn btn-sm btn-primary"
-                               href="asignar.php?idIncidencia=<?php echo $incidencia["idIncidencia"]; ?>">
+                               href="assignment.php?idIncidencia=<?php echo $incidencia["idIncidencia"]; ?>">
                                Asignar
                             </a>
                         </td>

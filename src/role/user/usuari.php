@@ -4,7 +4,7 @@
     
     <?php include '../../structure/userStructure/navBarUser.php'; ?>
 
-    <div class="inici_Usuari text-center">
+    <div class="text-center">
         <h1 class="mb-4">PANELL ACCIONS</h1>
 
         <div class="row g-4 justify-content-center">
