@@ -12,21 +12,21 @@
             <div class="col-12 col-md-4">
                 <div class="card accion-card h-100 text-center p-4">
                     <h4 class="mb-3">Crear Incidència</h4>
-                    <a href="insertar.php" class="btn btn-primary">Entrar</a>
+                    <a href="registerIncidence.php" class="btn btn-primary">Entrar</a>
                 </div>
             </div>
 
             <div class="col-12 col-md-4">
                 <div class="card accion-card h-100 text-center p-4">
                     <h4 class="mb-3">Llistar Incidències</h4>
-                    <a href="llistat.php" class="btn btn-success">Entrar</a>
+                    <a href="incidenceList.php" class="btn btn-success">Entrar</a>
                 </div>
             </div>
 
             <div class="col-12 col-md-4">
                 <div class="card accion-card h-100 text-center p-4">
                     <h4 class="mb-3">Filtrar per ID</h4>
-                    <a href="findByIdIncidencia.php" class="btn btn-dark">Entrar</a>
+                    <a href="findByIdIncidence.php" class="btn btn-dark">Entrar</a>
                 </div>
             </div>
 

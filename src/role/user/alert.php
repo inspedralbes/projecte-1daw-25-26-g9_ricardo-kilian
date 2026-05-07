@@ -26,11 +26,11 @@ if ($idIncidencia === null) {
 
                 <hr>
 
-                <a href="insertar.php" class="btn btn-primary">
+                <a href="registerIncidence.php" class="btn btn-primary">
                     Crear una nova incidència
                 </a>
 
-                <a href="llistat.php" class="btn btn-secondary ms-2">
+                <a href="lincidenceList.php" class="btn btn-secondary ms-2">
                     Veure incidències
                 </a>
 

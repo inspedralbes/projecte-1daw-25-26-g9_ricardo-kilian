@@ -3,7 +3,7 @@
 <main class="container mt-4">
 
     <!-- Banner -->
-    <div class="row justify-content-center mb-5">
+    <div class="row justify-content-center mb-3 ">
         <div class="col-10 col-md-6">
             <div class="banner-login">
                 GESTOR D'INCIDÈNCIES

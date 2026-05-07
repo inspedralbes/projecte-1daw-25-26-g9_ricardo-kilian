@@ -7,6 +7,7 @@ $idIncidencia = $_GET["idIncidencia"];
 
 $tecnics = $mysqli->query("SELECT idTecnic, nom FROM TECNIC");
 $tipus = $mysqli->query("SELECT idTipus, nom FROM TIPUS");
+$prioritat = $mysqli->query("SELECT prioritat FROM INCIDENCIA");
 ?>
 
 <main class="container mt-5">
@@ -43,6 +44,19 @@ $tipus = $mysqli->query("SELECT idTipus, nom FROM TIPUS");
                         <?php while ($ti = $tipus->fetch_assoc()): ?>
                             <option value="<?php echo $ti["idTipus"]; ?>">
                                 <?php echo $ti["nom"]; ?>
+                            </option>
+                        <?php endwhile; ?>
+                    </select>
+                </div>
+
+                <!-- Prioritat -->
+                <div class="mb-3">
+                    <label class="form-label">Prioritat</label>
+                    <select name="idPrioritat" class="form-select" required>
+                        <option value="">--Selecciona prioritat--</option>
+                        <?php while ($pr = $prioritat->fetch_assoc()): ?>
+                            <option value="<?php echo $pr["idPrioritat"]; ?>">
+                                <?php echo $pr["nom"]; ?>
                             </option>
                         <?php endwhile; ?>
                     </select>

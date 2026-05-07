@@ -11,5 +11,5 @@ $sentencia->bind_param("sii", $descripcio, $idTipus , $idDepartament);
 $sentencia->execute();
 $idIncidencia = $mysqli ->query("SELECT LAST_INSERT_ID()")->fetch_row()[0];
 
-header("Location: aviso.php?idIncidencia=" . $idIncidencia);
+header("Location: alert.php?idIncidencia=" . $idIncidencia);
 exit;

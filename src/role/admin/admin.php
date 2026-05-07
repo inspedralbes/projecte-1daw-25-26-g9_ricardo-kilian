@@ -18,15 +18,15 @@
 
             <div class="col-12 col-md-4">
                 <div class="card accion-card h-100 text-center p-4">
-                    <h4 class="mb-3">Crear Incidència</h4>
-                    <a href="insertar.php" class="btn btn-primary">Entrar</a>
+                    <h4 class="mb-3"></h4>
+                    <a href="" class="btn btn-primary">Entrar</a>
                 </div>
             </div>
 
             <div class="col-12 col-md-4">
                 <div class="card accion-card h-100 text-center p-4">
-                    <h4 class="mb-3">Filtrar per ID</h4>
-                    <a href="findByIdIncidencia.php" class="btn btn-dark">Entrar</a>
+                    <h4 class="mb-3">Logs</h4>
+                    <a href="" class="btn btn-dark">Entrar</a>
                 </div>
             </div>
 

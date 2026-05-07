@@ -19,7 +19,7 @@ $departaments = $llistatDept->fetch_all(MYSQLI_ASSOC);
             
             <h1 class="mb-4 text-center">Registrar Incidencia</h1>
 
-            <form action="registrar.php" method="POST">
+            <form action="register.php" method="POST">
                 
                 <!-- Descripció -->
                 <div class="mb-3">
