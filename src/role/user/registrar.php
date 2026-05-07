@@ -1,5 +1,5 @@
 <?php
-$mysqli = include_once "../..connexio.php";
+$mysqli = include_once "../../connexio.php";
 
 $descripcio = $_POST["descripcio"];
 $idTipus = $_POST["idTipus"];
