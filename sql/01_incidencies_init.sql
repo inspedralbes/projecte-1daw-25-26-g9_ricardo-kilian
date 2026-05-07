@@ -41,12 +41,12 @@ CREATE TABLE ACTUACIO (
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     temps INT,
     idIncidencia INT,
-    visible INT(1),
+    visible TINYINT(1) DEFAULT 1,
+    resolta TINYINT(1) DEFAULT 0,
     idTecnic INT,
     FOREIGN KEY (idTecnic) REFERENCES TECNIC(idTecnic),
     FOREIGN KEY (idIncidencia) REFERENCES INCIDENCIA(idIncidencia)
 );
-
 
 -- INSERTS
 
@@ -79,8 +79,8 @@ INSERT INTO INCIDENCIA (descripcio, data, idDepartament, idTecnic, idTipus, data
     ('Problema de connexió a internet', NOW(), 4, 3, 3, NULL, 1),
     ('Revisió de sistema', NOW(), 2, 4, 4, NULL, 3);
 
-INSERT INTO ACTUACIO ( descripcio, data, temps, idIncidencia, visible, idTecnic) VALUES
-    ('Revisió inicial', NOW(), 30, 1, 1, 1),
-    ('Reinici del sistema', NOW(), 15, 2, 1, 2),
-    ('Configuració de xarxa', NOW(), 45, 3, 1, 3),
-    ('Tasques de manteniment', NOW(), 60, 4, 0, 4);
+INSERT INTO ACTUACIO (descripcio, data, temps, idIncidencia, visible, resolta, idTecnic) VALUES
+    ('Revisió inicial', NOW(), 30, 1, 1, 0, 1),
+    ('Reinici del sistema', NOW(), 15, 2, 1, 1, 2),
+    ('Configuració de xarxa', NOW(), 45, 3, 1, 0, 3),
+    ('Tasques de manteniment', NOW(), 60, 4, 0, 1, 4);

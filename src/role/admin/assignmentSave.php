@@ -1,6 +1,4 @@
-<?php include '../../structure/header.php'; ?>
-
-<?php
+<?php include '../../structure/header.php'; 
 
 $mysqli = include_once "../../connexio.php";
 
