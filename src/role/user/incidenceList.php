@@ -11,12 +11,18 @@ $resultado = $mysqli->query("
         t.nom AS tecnic,
         tp.nom AS tipus,
         i.dataFinalitzacio,
-        i.prioritat
+        p.descripcio AS prioritat
     FROM INCIDENCIA i
-    LEFT JOIN DEPARTAMENT d ON i.idDepartament = d.idDepartament
-    LEFT JOIN TECNIC t ON i.idTecnic = t.idTecnic
-    LEFT JOIN TIPUS tp ON i.idTipus = tp.idTipus
+    LEFT JOIN DEPARTAMENT d 
+        ON i.idDepartament = d.idDepartament
+    LEFT JOIN TECNIC t 
+        ON i.idTecnic = t.idTecnic
+    LEFT JOIN TIPUS tp 
+        ON i.idTipus = tp.idTipus
+    LEFT JOIN PRIORITAT p 
+        ON i.idPrioritat = p.idPrioritat
 ");
+
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 

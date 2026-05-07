@@ -15,27 +15,35 @@ CREATE TABLE TECNIC (
     nom VARCHAR(200)
 );
 
+CREATE TABLE PRIORITAT (
+    idPrioritat INT AUTO_INCREMENT PRIMARY KEY,
+    descripcio VARCHAR(100)
+);
+
 CREATE TABLE INCIDENCIA (
     idIncidencia INT AUTO_INCREMENT PRIMARY KEY,
     descripcio VARCHAR(2000),
-    data TIMESTAMP,
+    data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     idDepartament INT,
     idTecnic INT,
     idTipus INT,
     dataFinalitzacio DATE,
-    prioritat ENUM ('Alta', 'Mitja', 'Baixa'),
+    idPrioritat INT,
     FOREIGN KEY (idTecnic) REFERENCES TECNIC(idTecnic),
     FOREIGN KEY (idDepartament) REFERENCES DEPARTAMENT(idDepartament),
-    FOREIGN KEY (idTipus) REFERENCES TIPUS(idTipus)
+    FOREIGN KEY (idTipus) REFERENCES TIPUS(idTipus),
+    FOREIGN KEY (idPrioritat) REFERENCES PRIORITAT(idPrioritat)
 );
 
 CREATE TABLE ACTUACIO (
     idActuacio INT AUTO_INCREMENT PRIMARY KEY,
     descripcio VARCHAR(2000),
-    data TIMESTAMP,
+    data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     temps INT,
     idIncidencia INT,
     visible INT(1),
+    idTecnic INT,
+    FOREIGN KEY (idTecnic) REFERENCES TECNIC(idTecnic),
     FOREIGN KEY (idIncidencia) REFERENCES INCIDENCIA(idIncidencia)
 );
 
@@ -60,14 +68,19 @@ INSERT INTO TECNIC (nom) VALUES
     ('Marc'),
     ('Laura');
 
-INSERT INTO INCIDENCIA (descripcio, data, idDepartament, idTecnic, idTipus, dataFinalitzacio, prioritat) VALUES
-    ('Ordinador no arrenca', NOW(), 1, 1, 1, NULL, 'Alta'),
-    ('Error en aplicació interna', NOW(), 1, 2, 2, NULL, 'Mitja'),
-    ('Problema de connexió a internet', NOW(), 4, 3, 3, NULL, 'Alta'),
-    ('Revisió de sistema', NOW(), 2, 4, 4, NULL, 'Baixa');
+INSERT INTO PRIORITAT (descripcio) VALUES
+    ('Alta'),
+    ('Mitja'),
+    ('Baixa');
 
-INSERT INTO ACTUACIO (descripcio, data, temps, idIncidencia, visible) VALUES
-    ('Revisió inicial', NOW(), 30, 1, 1),
-    ('Reinici del sistema', NOW(), 15, 2, 1),
-    ('Configuració de xarxa', NOW(), 45, 3, 1),
-    ('Tasques de manteniment', NOW(), 60, 4, 0);
+INSERT INTO INCIDENCIA (descripcio, data, idDepartament, idTecnic, idTipus, dataFinalitzacio, idPrioritat) VALUES
+    ('Ordinador no arrenca', NOW(), 1, 1, 1, NULL, 1),
+    ('Error en aplicació interna', NOW(), 1, 2, 2, NULL, 2),
+    ('Problema de connexió a internet', NOW(), 4, 3, 3, NULL, 1),
+    ('Revisió de sistema', NOW(), 2, 4, 4, NULL, 3);
+
+INSERT INTO ACTUACIO ( descripcio, data, temps, idIncidencia, visible, idTecnic) VALUES
+    ('Revisió inicial', NOW(), 30, 1, 1, 1),
+    ('Reinici del sistema', NOW(), 15, 2, 1, 2),
+    ('Configuració de xarxa', NOW(), 45, 3, 1, 3),
+    ('Tasques de manteniment', NOW(), 60, 4, 0, 4);

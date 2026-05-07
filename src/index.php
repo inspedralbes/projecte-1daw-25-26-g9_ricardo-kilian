@@ -37,7 +37,7 @@
             <a href="./role/user/usuari.php" class="rol-card">
                 <img src="../photos/user.jpg" class="rol-img" alt="Usuari">
                 <div class="overlay"></div>
-                <span class="rol-label">USER</span>
+                <span class="rol-label">PROFESSORAT</span>
             </a>
         </div>
 

@@ -7,7 +7,7 @@
 <div class="user-bar container-fluid">
     <div class="d-flex justify-content-end">    
         <div class="user-box">
-            <span>USUARI</span> 
+            <span>PROFESSORAT</span> 
             <img src="../../photos/user.jpg" alt="Usuario">
         </div>
     </div>

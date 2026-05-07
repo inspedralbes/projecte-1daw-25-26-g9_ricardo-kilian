@@ -7,7 +7,7 @@ $idIncidencia = $_GET["idIncidencia"];
 
 $tecnics = $mysqli->query("SELECT idTecnic, nom FROM TECNIC");
 $tipus = $mysqli->query("SELECT idTipus, nom FROM TIPUS");
-$prioritat = $mysqli->query("SELECT prioritat FROM INCIDENCIA");
+$prioritat = $mysqli->query("SELECT idPrioritat, descripcio FROM PRIORITAT");
 ?>
 
 <main class="container mt-5">
@@ -56,7 +56,7 @@ $prioritat = $mysqli->query("SELECT prioritat FROM INCIDENCIA");
                         <option value="">--Selecciona prioritat--</option>
                         <?php while ($pr = $prioritat->fetch_assoc()): ?>
                             <option value="<?php echo $pr["idPrioritat"]; ?>">
-                                <?php echo $pr["nom"]; ?>
+                                <?php echo $pr["descripcio"]; ?>
                             </option>
                         <?php endwhile; ?>
                     </select>

@@ -30,7 +30,7 @@ if ($idIncidencia === null) {
                     Crear una nova incidència
                 </a>
 
-                <a href="lincidenceList.php" class="btn btn-secondary ms-2">
+                <a href="incidenceList.php" class="btn btn-secondary ms-2">
                     Veure incidències
                 </a>
 
