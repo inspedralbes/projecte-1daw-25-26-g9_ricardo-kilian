@@ -1,6 +1,5 @@
 <?php
 $mysqli = include_once "../../connexio.php";
-
 $tecnics = $mysqli->query("SELECT idTecnic, nom FROM TECNIC")
 ->fetch_all(MYSQLI_ASSOC);
 ?>
@@ -27,21 +26,23 @@ $tecnics = $mysqli->query("SELECT idTecnic, nom FROM TECNIC")
          </div>
         <?php endforeach; ?>
 
-        
-
     </div>
 
     <div class="Accio mt-4">
 
-        <h5>Entrar per ID d'incidència</h5>
+        <h5>Entrar per id</h5>
+         <form action="llistattecnic.php" method="GET">
+            <input type="number" name="id" class="form-control mt-3" placeholder="ID incidència" required>
+            <button class="btn btn-primary w-100 mt-3">Entrar</button>
+        </form>
+    </div>
 
-        <button class="btn btn-primary w-100 mt-3">Entrar</button>
-            
+    <div class="Accio mt-4">
 
         <div class="box text-center">
             <h5>Veure totes les incidències</h5>
 
-        <button class="btn btn-primary w-100 mt-3">Entrar</button>
+            <a href="llistattecnic.php" class="btn btn-primary w-100 mt-3">Entrar</a>
         </div>
 
     </div>
