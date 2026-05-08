@@ -65,6 +65,12 @@ if (!$idIncidencia) {
                         </div>
 
                         <button class="btn btn-success w-100">Guardar actuació</button>
+                        <a 
+                            href="performanceByIncidence.php?idIncidencia=<?php echo $idIncidencia; ?>"
+                            class="btn btn-primary w-100 mt-3"
+                        >
+                            LLISTAR ACTUACIONS
+                        </a>
 
                     </form>
                 </div>

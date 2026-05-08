@@ -44,6 +44,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                     <th>Tipus</th>
                     <th>Finalitzacio</th>
                     <th>Prioritat</th>
+                    <th>Actuacions</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,6 +58,14 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                         <td><?php echo $incidencia["tipus"] ?></td>
                         <td><?php echo $incidencia["dataFinalitzacio"] ?></td>
                         <td><?php echo $incidencia["prioritat"] ?></td>
+                        <td>
+                            <a 
+                                href="performanceByIncidence.php?idIncidencia=<?php echo $incidencia['idIncidencia']; ?>"
+                                class="btn btn-sm btn-primary"
+                            >
+                                Entrar
+                            </a>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>

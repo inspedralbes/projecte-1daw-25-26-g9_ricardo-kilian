@@ -2,23 +2,28 @@
 
 $mysqli = include_once "../../connexio.php";
 
+
+$resultTecnics = $mysqli->query("
+    SELECT idTecnic, nom
+    FROM TECNIC
+");
+
+$resultDepartaments = $mysqli->query("
+    SELECT idDepartament, nom
+    FROM DEPARTAMENT
+");
+
+$resultPrioritats = $mysqli->query("
+    SELECT idPrioritat, descripcio
+    FROM PRIORITAT
+");
+
 $idTecnic = $_GET['idTecnic'] ?? null;
+$idDepartament = $_GET['idDepartament'] ?? null;
+$idPrioritat = $_GET['idPrioritat'] ?? null;
 
-if (!$idTecnic) {
 
-    echo "
-    <main class='container mt-5'>
-        <div class='alert alert-danger'>
-            No s'ha seleccionat cap tècnic.
-        </div>
-    </main>
-    ";
-
-    include '../../structure/footer.php';
-    exit;
-}
-
-$stmt = $mysqli->prepare("
+$sql = "
     SELECT 
         i.idIncidencia,
         i.descripcio,
@@ -29,18 +34,34 @@ $stmt = $mysqli->prepare("
         i.dataFinalitzacio,
         pr.descripcio as descripcioPR
     FROM INCIDENCIA i
-    LEFT JOIN DEPARTAMENT d ON i.idDepartament = d.idDepartament
-    LEFT JOIN TECNIC t ON i.idTecnic = t.idTecnic
-    LEFT JOIN TIPUS tp ON i.idTipus = tp.idTipus
-    LEFT JOIN PRIORITAT pr ON i.idPrioritat = pr.idPrioritat
-    WHERE i.idTecnic = ?
-");
+    LEFT JOIN DEPARTAMENT d 
+        ON i.idDepartament = d.idDepartament
+    LEFT JOIN TECNIC t 
+        ON i.idTecnic = t.idTecnic
+    LEFT JOIN TIPUS tp 
+        ON i.idTipus = tp.idTipus
+    LEFT JOIN PRIORITAT pr 
+        ON i.idPrioritat = pr.idPrioritat
+";
 
-$stmt->bind_param("i", $idTecnic);
 
-$stmt->execute();
+if ($idTecnic) {
 
-$resultado = $stmt->get_result();
+    $sql .= " WHERE i.idTecnic = ? ";
+
+    $stmt = $mysqli->prepare($sql);
+
+    $stmt->bind_param("i", $idTecnic);
+
+    $stmt->execute();
+
+    $resultado = $stmt->get_result();
+
+} else {
+
+    $resultado = $mysqli->query($sql);
+
+}
 
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
@@ -51,9 +72,14 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
     <?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
 
     <h1 class="mb-4 text-center">
-        Incidències del tècnic
+
+        Llistat d'Incidències
+
     </h1>
 
+    
+    <!-- TABLA -->
+    
     <?php if (count($incidencias) > 0): ?>
 
         <div class="table-responsive">
@@ -97,12 +123,16 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                             <td><?php echo $incidencia["dataFinalitzacio"]; ?></td>
 
                             <td><?php echo $incidencia["descripcioPR"]; ?></td>
+
                             <td>
+
                                 <a 
                                     href="performance.php?idIncidencia=<?php echo $incidencia['idIncidencia']; ?>" 
                                     class="btn btn-sm btn-primary"
                                 >
+
                                     Entrar
+
                                 </a>
 
                             </td>
@@ -121,11 +151,67 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
         <div class="alert alert-warning text-center">
 
-            Aquest tècnic no té incidències assignades.
+            No hi ha incidències disponibles.
 
         </div>
 
     <?php endif; ?>
+
+    <!-- FILTRE -->
+    <div class="row justify-content-center mb-4">
+
+        <div class="col-md-5">
+
+            <form method="GET">
+
+                <div class="card p-3 shadow-sm">
+
+                    <h5 class="mb-3 text-center">
+
+                        Filtrar per tècnic
+
+                    </h5>
+
+                    <select 
+                        name="idTecnic"
+                        class="form-select mb-3"
+                    >
+
+                        <option value="">
+                            -- Tots els tècnics --
+                        </option>
+
+                        <?php while($tecnic = $resultTecnics->fetch_assoc()): ?>
+
+                            <option 
+                                value="<?php echo $tecnic['idTecnic']; ?>"
+                                <?php if($idTecnic == $tecnic['idTecnic']) echo 'selected'; ?>
+                            >
+
+                                <?php echo htmlspecialchars($tecnic['nom']); ?>
+
+                            </option>
+
+                        <?php endwhile; ?>
+
+                    </select>
+
+                    <button 
+                        type="submit"
+                        class="btn btn-primary w-100"
+                    >
+
+                        Filtrar
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </main>
 

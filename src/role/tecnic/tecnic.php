@@ -1,15 +1,6 @@
-<?php include '../../structure/header.php';
+<?php include '../../structure/header.php'; ?>
 
-$mysqli = include_once "../../connexio.php";
-
-$resultTecnics = $mysqli->query("
-    SELECT idTecnic, nom
-    FROM TECNIC
-");
-
-?>
-
-<main class="container mt-5">
+<main class="container mt-4">
 
     <?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
 
@@ -17,39 +8,31 @@ $resultTecnics = $mysqli->query("
 
         <h1 class="mb-4">PANELL TÈCNIC</h1>
 
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <div class="card accion-card p-4">
+        <div class="row g-4 justify-content-center">
 
-                    <h4 class="mb-3">Incidències per Tècnic  </h4>
+            <div class="col-12 col-md-4">
 
-                    <form action="tecnicList.php" method="GET">
+                <div class="card accion-card h-100 text-center p-4">
 
-                        <select name="idTecnic" class="form-select mb-3" required>
+                    <h4 class="mb-3">
+                        Llistar Incidències
+                    </h4>
 
-                            <option value="">
-                                -- Selecciona un tècnic --
-                            </option>
+                    <a 
+                        href="tecnicList.php"
+                        class="btn btn-success"
+                    >
+                        Entrar
+                    </a>
 
-                            <?php while($tecnic = $resultTecnics->fetch_assoc()): ?>
-
-                                <option value="<?php echo $tecnic['idTecnic']; ?>">
-
-                                    <?php echo htmlspecialchars($tecnic['nom']); ?>
-
-                                </option>
-
-                            <?php endwhile; ?>
-
-                        </select>
-
-                        <button type="submit" class="btn btn-primary">Veure Incidències</button>
-
-                    </form>
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </main>
 
 <?php include '../../structure/logOut.php'; ?>
