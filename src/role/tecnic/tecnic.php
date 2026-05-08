@@ -1,53 +1,56 @@
-<?php
+<?php include '../../structure/header.php';
+
 $mysqli = include_once "../../connexio.php";
-$tecnics = $mysqli->query("SELECT idTecnic, nom FROM TECNIC")
-->fetch_all(MYSQLI_ASSOC);
+
+$resultTecnics = $mysqli->query("
+    SELECT idTecnic, nom
+    FROM TECNIC
+");
+
 ?>
 
-<main class="container mt-4 admin-bg">
-<title>Tecnic</title>
+<main class="container mt-5">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
 
+    <div class="text-center">
 
-<div class="inici_Admin text-center">
+        <h1 class="mb-4">PANELL TÈCNIC</h1>
 
-<h1 class="text-center mb-4">Gestió d'Incidències</h1>
-        
-<div class="Accio mt-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="card accion-card p-4">
 
-    <h5>Tots els tècnics</h5>
+                    <h4 class="mb-3">Incidències per Tècnic  </h4>
 
-    <div class="tecnic-list mt-2">
+                    <form action="tecnicList.php" method="GET">
 
-        <?php foreach ($tecnics as $t): ?>
-         <div>
-        <?= $t["nom"] ?>
-         </div>
-        <?php endforeach; ?>
+                        <select name="idTecnic" class="form-select mb-3" required>
 
-    </div>
+                            <option value="">
+                                -- Selecciona un tècnic --
+                            </option>
 
-    <div class="Accio mt-4">
+                            <?php while($tecnic = $resultTecnics->fetch_assoc()): ?>
 
-        <h5>Entrar per id</h5>
-         <form action="llistattecnic.php" method="GET">
-            <input type="number" name="id" class="form-control mt-3" placeholder="ID incidència" required>
-            <button class="btn btn-primary w-100 mt-3">Entrar</button>
-        </form>
-    </div>
+                                <option value="<?php echo $tecnic['idTecnic']; ?>">
 
-    <div class="Accio mt-4">
+                                    <?php echo htmlspecialchars($tecnic['nom']); ?>
 
-        <div class="box text-center">
-            <h5>Veure totes les incidències</h5>
+                                </option>
 
-            <a href="llistattecnic.php" class="btn btn-primary w-100 mt-3">Entrar</a>
+                            <?php endwhile; ?>
+
+                        </select>
+
+                        <button type="submit" class="btn btn-primary">Veure Incidències</button>
+
+                    </form>
+                </div>
+            </div>
         </div>
-
     </div>
-
-</div>
-
 </main>
 
+<?php include '../../structure/logOut.php'; ?>
+<?php include '../../structure/footer.php'; ?>

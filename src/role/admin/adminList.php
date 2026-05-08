@@ -22,6 +22,7 @@ $resultado = $mysqli->query("
         ON i.idTipus = tp.idTipus
     LEFT JOIN PRIORITAT p 
         ON i.idPrioritat = p.idPrioritat
+    WHERE i.dataFinalitzacio IS NULL;
 ");
 
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);

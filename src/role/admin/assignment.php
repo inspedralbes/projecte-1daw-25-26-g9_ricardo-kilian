@@ -16,7 +16,7 @@ $prioritat = $mysqli->query("SELECT idPrioritat, descripcio FROM PRIORITAT");
         <div class="col-12 col-md-6">
 
             <h2 class="mb-4 text-center">
-                Asignar incidència #<?php echo $idIncidencia; ?>
+                Assignar incidència #<?php echo $idIncidencia; ?>
             </h2>
 
             <form action="assignmentSave.php" method="POST">
