@@ -66,11 +66,7 @@ $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
 
                         <div class="card-body">
 
-                            <h5 class="card-title">
-
-                                Actuació
-
-                            </h5>
+                            <h5 class="card-title">Actuació</h5>
 
                             <p class="card-text">
 
@@ -81,29 +77,21 @@ $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
                             <hr>
 
                             <p class="mb-1">
-
                                 <strong>Data:</strong>
                                 <?php echo $a['data']; ?>
-
                             </p>
 
                             <p class="mb-0">
-
                                 <strong>Temps requerit:</strong>
-                                <?php echo $a['temps']; ?> hores
-
+                                <?php echo $a['temps']; ?> minuts
                             </p>
 
                         </div>
-
                     </div>
-
                 </div>
-
             <?php endforeach; ?>
-
         </div>
-
+        
     <?php else: ?>
 
         <div class="alert alert-warning text-center">

@@ -33,7 +33,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
     <h1 class="mb-4 text-center">Llistat d'Incidències</h1>
 
     <div class="table-responsive">
-        <table class="table table-striped table-hover align-middle">
+        <table class="table table-striped table-hover text-center">
 
             <thead class="table-dark">
                 <tr>

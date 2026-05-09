@@ -30,19 +30,18 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
     <?php include '../../structure/userStructure/navBarUser.php'; ?>
 
-    <h1 class="mb-4 text-center">Llistat d'Incidències</h1>
-
+    <br>
     <div class="table-responsive">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover text-center">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Descripcio</th>
+                    <th>Descripció</th>
                     <th>Data</th>
                     <th>Departament</th>
                     <th>Tecnic</th>
                     <th>Tipus</th>
-                    <th>Finalitzacio</th>
+                    <th>Finalització</th>
                     <th>Prioritat</th>
                     <th>Actuacions</th>
                 </tr>

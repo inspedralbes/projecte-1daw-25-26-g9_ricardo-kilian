@@ -42,19 +42,16 @@ $sql = "
         ON i.idTipus = tp.idTipus
     LEFT JOIN PRIORITAT pr 
         ON i.idPrioritat = pr.idPrioritat
+    WHERE i.dataFinalitzacio IS NULL;
 ";
 
 
 if ($idTecnic) {
 
     $sql .= " WHERE i.idTecnic = ? ";
-
     $stmt = $mysqli->prepare($sql);
-
     $stmt->bind_param("i", $idTecnic);
-
     $stmt->execute();
-
     $resultado = $stmt->get_result();
 
 } else {
@@ -70,22 +67,13 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 <main class="container mt-5">
 
     <?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
-
-    <h1 class="mb-4 text-center">
-
-        Llistat d'Incidències
-
-    </h1>
-
-    
-    <!-- TABLA -->
     
     <?php if (count($incidencias) > 0): ?>
 
+        <br>
+
         <div class="table-responsive">
-
-            <table class="table table-striped table-hover">
-
+            <table class="table table-striped table-hover text-center">
                 <thead class="table-dark">
 
                     <tr>
@@ -120,7 +108,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
                             <td><?php echo $incidencia["tipus"]; ?></td>
 
-                            <td><?php echo $incidencia["dataFinalitzacio"]; ?></td>
+                            <td>-</td>
 
                             <td><?php echo $incidencia["descripcioPR"]; ?></td>
 
@@ -130,21 +118,13 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                                     href="performance.php?idIncidencia=<?php echo $incidencia['idIncidencia']; ?>" 
                                     class="btn btn-sm btn-primary"
                                 >
-
                                     Entrar
-
                                 </a>
-
                             </td>
-
                         </tr>
-
                     <?php endforeach; ?>
-
                 </tbody>
-
             </table>
-
         </div>
 
     <?php else: ?>
@@ -157,25 +137,14 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
     <?php endif; ?>
 
-    <!-- FILTRE -->
     <div class="row justify-content-center mb-4">
-
         <div class="col-md-5">
-
             <form method="GET">
-
                 <div class="card p-3 shadow-sm">
 
-                    <h5 class="mb-3 text-center">
+                    <h5 class="mb-3 text-center">Filtrar per tècnic</h5>
 
-                        Filtrar per tècnic
-
-                    </h5>
-
-                    <select 
-                        name="idTecnic"
-                        class="form-select mb-3"
-                    >
+                    <select name="idTecnic" class="form-select mb-3">
 
                         <option value="">
                             -- Tots els tècnics --
@@ -193,26 +162,14 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                             </option>
 
                         <?php endwhile; ?>
-
                     </select>
 
-                    <button 
-                        type="submit"
-                        class="btn btn-primary w-100"
-                    >
-
-                        Filtrar
-
-                    </button>
+                    <button type="submit" class="btn btn-primary w-100">Filtrar</button>
 
                 </div>
-
             </form>
-
         </div>
-
     </div>
-
 </main>
 
 <?php include '../../structure/logOut.php'; ?>

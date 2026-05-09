@@ -22,8 +22,6 @@ if (!$idIncidencia) {
 
 <main class="container mt-5">
 
-    <?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
-
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card shadow-sm">
@@ -51,10 +49,23 @@ if (!$idIncidencia) {
 
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-3">
 
                             <label class="form-label">Visible per l'usuari</label>
 
+                            <select name="visible" class="form-select">
+
+                                <option value="1">SI</option>
+                                <option value="0">NO</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">Incidència resolta</label>
+                            
                             <select name="visible" class="form-select">
 
                                 <option value="1">SI</option>
