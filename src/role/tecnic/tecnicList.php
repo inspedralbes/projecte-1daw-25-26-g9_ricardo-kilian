@@ -126,45 +126,48 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
     <?php endif; ?>
 
-    <div class="row justify-content-center mb-4">
-        <div class="col-md-5">
-            <form method="GET">
-                <div class="card p-3 shadow-sm">
+    <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-4">
+            <div class="card accion-card h-100 text-center p-4">
+                <form method="GET">
+                    <div class="card p-3 shadow-sm">
 
-                    <h5 class="mb-3 text-center">Filtrar per tècnic</h5>
+                        <h5 class="mb-3 text-center">Filtrar per tècnic</h5>
 
-                    <select name="idTecnic" class="form-select mb-3">
+                        <select name="idTecnic" class="form-select mb-3">
 
-                        <option value="">
-                            -- Tots els tècnics --
-                        </option>
-
-                        <?php while($tecnic = $resultTecnics->fetch_assoc()): ?>
-
-                            <option 
-                                value="<?php echo $tecnic['idTecnic']; ?>"
-                                <?php if($idTecnic == $tecnic['idTecnic']) echo 'selected'; ?>
-                            >
-
-                                <?php echo htmlspecialchars($tecnic['nom']); ?>
-
+                            <option value="">
+                                -- Tots els tècnics --
                             </option>
 
-                        <?php endwhile; ?>
-                    </select>
+                            <?php while($tecnic = $resultTecnics->fetch_assoc()): ?>
 
-                    <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+                                <option 
+                                    value="<?php echo $tecnic['idTecnic']; ?>"
+                                    <?php if($idTecnic == $tecnic['idTecnic']) echo 'selected'; ?>
+                                >
 
-                </div>
-            </form>
+                                    <?php echo htmlspecialchars($tecnic['nom']); ?>
+
+                                </option>
+
+                            <?php endwhile; ?>
+                        </select>
+
+                        <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card accion-card h-75 text-center p-4">
+                <h4 class="mb-3">Filtrar per ID</h4>
+                <a href="findByIncidence.php" class="btn btn-dark">Entrar</a>
+            </div>
         </div>
     </div>
-    <div class="col-12 col-md-4">
-                <div class="card accion-card h-100 text-center p-4">
-                    <h4 class="mb-3">Filtrar per ID</h4>
-                    <a href="findByIdIncidence.php" class="btn btn-dark">Entrar</a>
-                </div>
-            </div>
 </main>
 
 <?php include '../../structure/logOut.php'; ?>
