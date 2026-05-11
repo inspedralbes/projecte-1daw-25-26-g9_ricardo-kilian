@@ -42,13 +42,13 @@ $sql = "
         ON i.idTipus = tp.idTipus
     LEFT JOIN PRIORITAT pr 
         ON i.idPrioritat = pr.idPrioritat
-    WHERE i.dataFinalitzacio IS NULL;
+    WHERE i.dataFinalitzacio IS NULL
 ";
 
 
 if ($idTecnic) {
 
-    $sql .= " WHERE i.idTecnic = ? ";
+    $sql .= "AND i.idTecnic = ? ";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $idTecnic);
     $stmt->execute();
@@ -93,27 +93,16 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                 <tbody>
 
                     <?php foreach ($incidencias as $incidencia): ?>
-
                         <tr>
-
                             <td><?php echo $incidencia["idIncidencia"]; ?></td>
-
                             <td><?php echo htmlspecialchars($incidencia["descripcio"]); ?></td>
-
                             <td><?php echo $incidencia["data"]; ?></td>
-
                             <td><?php echo $incidencia["departament"]; ?></td>
-
                             <td><?php echo $incidencia["tecnic"]; ?></td>
-
                             <td><?php echo $incidencia["tipus"]; ?></td>
-
                             <td>-</td>
-
                             <td><?php echo $incidencia["descripcioPR"]; ?></td>
-
                             <td>
-
                                 <a 
                                     href="performance.php?idIncidencia=<?php echo $incidencia['idIncidencia']; ?>" 
                                     class="btn btn-sm btn-primary"
@@ -170,6 +159,12 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
             </form>
         </div>
     </div>
+    <div class="col-12 col-md-4">
+                <div class="card accion-card h-100 text-center p-4">
+                    <h4 class="mb-3">Filtrar per ID</h4>
+                    <a href="findByIdIncidence.php" class="btn btn-dark">Entrar</a>
+                </div>
+            </div>
 </main>
 
 <?php include '../../structure/logOut.php'; ?>

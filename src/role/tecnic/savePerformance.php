@@ -30,9 +30,6 @@ $stmt->bind_param(
 
 $stmt->execute();
 
-/* =========================
-   FINALITZAR INCIDÈNCIA
-========================= */
 
 if ($resolta == 1) {
 
@@ -46,10 +43,6 @@ if ($resolta == 1) {
 
     $update->execute();
 }
-
-/* =========================
-   REDIRECT
-========================= */
 
 header("Location: tecnicList.php");
 

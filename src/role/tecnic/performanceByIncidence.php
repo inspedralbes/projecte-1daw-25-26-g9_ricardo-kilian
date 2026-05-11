@@ -24,18 +24,16 @@ if (!$idIncidencia) {
 }
 
 $stmt = $mysqli->prepare("
-    SELECT 
+    SELECT
         descripcio,
         data,
         temps
     FROM ACTUACIO
     WHERE idIncidencia = ?
-    AND visible = 1
     ORDER BY data DESC
 ");
 
 $stmt->bind_param("i", $idIncidencia);
-
 $stmt->execute();
 
 $resultado = $stmt->get_result();
@@ -76,12 +74,12 @@ $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
 
                             <hr>
 
-                            <p class="mb-1">
+                            <p>
                                 <strong>Data:</strong>
                                 <?php echo $a['data']; ?>
                             </p>
 
-                            <p class="mb-0">
+                            <p>
                                 <strong>Temps requerit:</strong>
                                 <?php echo $a['temps']; ?> minuts
                             </p>

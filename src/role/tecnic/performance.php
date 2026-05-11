@@ -44,7 +44,7 @@ if (!$idIncidencia) {
 
                         <div class="mb-3">
 
-                            <label class="form-label">Temps requerit (hores)</label>
+                            <label class="form-label">Temps requerit (minuts)</label>
                             <input type="number" name="temps" class="form-control" min="1" required>
 
                         </div>
