@@ -12,7 +12,6 @@ $resultado = $mysqli->query("
         tp.nom AS tipus,
         i.dataFinalitzacio,
         p.descripcio AS prioritat
-
     FROM INCIDENCIA i
     LEFT JOIN DEPARTAMENT d 
         ON i.idDepartament = d.idDepartament
@@ -22,14 +21,17 @@ $resultado = $mysqli->query("
         ON i.idTipus = tp.idTipus
     LEFT JOIN PRIORITAT p 
         ON i.idPrioritat = p.idPrioritat
-    WHERE i.dataFinalitzacio IS NULL;
+    WHERE i.dataFinalitzacio IS NULL
+    ORDER BY FIELD(p.descripcio, 'Alta', 'Mitja', 'Baixa')
 ");
 
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <main class="container mt-5">
+
     <?php include '../../structure/adminStructure/navBarAdmin.php'; ?>
+
     <h1 class="mb-4 text-center">Llistat d'Incidències</h1>
 
     <div class="table-responsive">
@@ -51,22 +53,42 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
             <tbody>
                 <?php foreach ($incidencias as $incidencia) { ?>
-                    <tr>
-                        <td><?php echo $incidencia["idIncidencia"] ?></td>
-                        <td><?php echo $incidencia["descripcio"] ?></td>
-                        <td><?php echo $incidencia["data"] ?></td>
-                        <td><?php echo $incidencia["departament"] ?></td>
-                        <td><?php echo $incidencia["tecnic"] ?></td>
-                        <td><?php echo $incidencia["tipus"] ?></td>
-                        <td><?php echo $incidencia["dataFinalitzacio"] ?></td>
-                        <td><?php echo $incidencia["prioritat"] ?></td>
+                <?php
+                $color = "";
+
+                if($incidencia["prioritat"] == "Alta"){
+                    $color = "table-danger";
+                }
+                else if($incidencia["prioritat"] == "Mitja"){
+                    $color = "table-warning";
+                }
+                else if($incidencia["prioritat"] == "Baixa"){
+                    $color = "table-success";
+                }
+                ?>
+                
+
+                    <tr class="<?= $color ?>">
+                        <td><?= $incidencia["idIncidencia"] ?></td>
+                        <td><?= $incidencia["descripcio"] ?></td>
+                        <td><?= $incidencia["data"] ?></td>
+                        <td><?= $incidencia["departament"] ?></td>
+                        <td><?= $incidencia["tecnic"] ?></td>
+                        <td><?= $incidencia["tipus"] ?></td>
+                        <td><?= $incidencia["dataFinalitzacio"] ?></td>
+                        <td>
+                            <span class="<?= $color ?>">
+                                <?= $incidencia["prioritat"] ?>
+                            </span>
+                        </td>
                         <td>
                             <a class="btn btn-sm btn-primary"
-                               href="assignment.php?idIncidencia=<?php echo $incidencia["idIncidencia"]; ?>">
+                               href="assignment.php?idIncidencia=<?= $incidencia["idIncidencia"]; ?>">
                                Asignar
                             </a>
                         </td>
                     </tr>
+
                 <?php } ?>
             </tbody>
 

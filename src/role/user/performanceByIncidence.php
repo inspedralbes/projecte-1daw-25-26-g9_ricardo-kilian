@@ -87,7 +87,7 @@ $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
                             <p class="mb-0">
 
                                 <strong>Temps requerit:</strong>
-                                <?php echo $a['temps']; ?> hores
+                                <?php echo $a['temps']; ?> minuts
 
                             </p>
 
