@@ -9,10 +9,6 @@ main {
     flex: 1;
 }
 
-/* =========================
-   BANNER
-========================= */
-
 .banner-login {
     background-color: #cfe2ff;
     border: 2px solid #9ec5fe;
@@ -24,9 +20,6 @@ main {
     text-align: center;
     color: #1a1a2e;
 }
-/* =========================
-   HEADER
-========================= */
 
 .header {
     background-color: #cfe2ff;
@@ -38,21 +31,12 @@ main {
     height: 90px;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 .footer {
     background-color: #cfe2ff;
     border-top: 2px solid #9ec5fe;
     font-size: 0.95rem;
     color: #1a1a2e;
 }
-
-
-/* =========================
-   CARDS INDEXS
-========================= */
 
 .rol-card {
     position: relative;
@@ -111,7 +95,6 @@ main {
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-
 .user-box img {
     height: 40px;
     width: 40px;
@@ -122,7 +105,6 @@ main {
     font-weight: 500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 
 .user-box-admin {
     display: flex;
@@ -147,7 +129,6 @@ main {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
 .user-box-tecnic {
     display: flex;
     align-items: center;
@@ -168,7 +149,6 @@ main {
     font-weight: 500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 
 .accion-card {
     border: none;
@@ -205,7 +185,15 @@ main {
     transform: translateY(-2px);
 }
 
-/* altura responsive */
+input:focus {
+    outline: 3px solid #000000;
+    outline-offset: 2px;
+}
+
+button:focus {
+  outline: 3px solid orange;
+}
+
 @media (min-width: 992px) {
     .rol-card {
         height: 350px;

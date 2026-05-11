@@ -2,7 +2,6 @@
 
 <main class="container mt-4">
 
-    <!-- Banner -->
     <div class="row justify-content-center mb-3 ">
         <div class="col-10 col-md-6">
             <div class="banner-login">
@@ -11,10 +10,7 @@
         </div>
     </div>
 
-    <!-- ROLES -->
     <div class="row justify-content-center g-4">
-
-        <!-- ADMIN -->
         <div class="col-10 col-sm-4 col-md-3">
             <a href="./role/admin/admin.php" class="rol-card">
                 <img src="../photos/admin.jpg" class="rol-img" alt="Admin">
@@ -23,7 +19,6 @@
             </a>
         </div>
 
-        <!-- TÈCNIC -->
         <div class="col-10 col-sm-4 col-md-3">
             <a href="./role/tecnic/tecnic.php" class="rol-card">
                 <img src="../photos/tecnic.jpg" class="rol-img" alt="Tècnic">
@@ -32,7 +27,6 @@
             </a>
         </div>
 
-        <!-- USUARI -->
         <div class="col-10 col-sm-4 col-md-3">
             <a href="./role/user/usuari.php" class="rol-card">
                 <img src="../photos/user.jpg" class="rol-img" alt="Usuari">

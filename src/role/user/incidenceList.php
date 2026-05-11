@@ -1,4 +1,4 @@
-<?php include '../../structure/header.php'; 
+<?php include '../../structure/header.php';
 
 $mysqli = include_once "../../connexio.php";
 
@@ -26,51 +26,114 @@ $resultado = $mysqli->query("
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 
-<main class="container mt-5">
+<main class="container mt-5" id="main-content">
+
+    <a href="#taula-incidencies" class="visually-hidden-focusable">
+        Saltar al contingut principal
+    </a>
 
     <?php include '../../structure/userStructure/navBarUser.php'; ?>
+    
+    <h1 class="mb-4 text-center">
+        Llistat d’incidències
+    </h1>
 
-    <br>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover text-center">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Descripció</th>
-                    <th>Data</th>
-                    <th>Departament</th>
-                    <th>Tecnic</th>
-                    <th>Tipus</th>
-                    <th>Finalització</th>
-                    <th>Prioritat</th>
-                    <th>Actuacions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($incidencias as $incidencia) { ?>
+    <?php if (count($incidencias) > 0): ?>
+
+        <div class="table-responsive">
+
+            <table 
+                id="taula-incidencies"
+                class="table table-striped table-hover text-center align-middle"
+            >
+
+                <caption class="visually-hidden">
+                    Taula amb el llistat d’incidències registrades
+                </caption>
+
+                <thead class="table-dark">
                     <tr>
-                        <td><?php echo $incidencia["idIncidencia"] ?></td>
-                        <td><?php echo $incidencia["descripcio"] ?></td>
-                        <td><?php echo $incidencia["data"] ?></td>
-                        <td><?php echo $incidencia["departament"] ?></td>
-                        <td><?php echo $incidencia["tecnic"] ?></td>
-                        <td><?php echo $incidencia["tipus"] ?></td>
-                        <td><?php echo $incidencia["dataFinalitzacio"] ?></td>
-                        <td><?php echo $incidencia["prioritat"] ?></td>
-                        <td>
-                            <a 
-                                href="performanceByIncidence.php?idIncidencia=<?php echo $incidencia['idIncidencia']; ?>"
-                                class="btn btn-sm btn-primary"
-                            >
-                                Entrar
-                            </a>
-                        </td>
+                        <th scope="col">ID</th>
+                        <th scope="col">Descripció</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Departament</th>
+                        <th scope="col">Tècnic</th>
+                        <th scope="col">Tipus</th>
+                        <th scope="col">Finalització</th>
+                        <th scope="col">Prioritat</th>
+                        <th scope="col">Actuacions</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
+                </thead>
+
+                <tbody>
+
+                    <?php foreach ($incidencias as $incidencia): ?>
+
+                        <tr>
+
+                            <td>
+                                <?php echo htmlspecialchars($incidencia["idIncidencia"]); ?>
+                            </td>
+
+                            <td>
+                                <?php echo htmlspecialchars($incidencia["descripcio"]); ?>
+                            </td>
+
+                            <td>
+                                <?php echo htmlspecialchars($incidencia["data"]); ?>
+                            </td>
+
+                            <td>
+                                <?php echo htmlspecialchars($incidencia["departament"] ?? ''); ?>
+                            </td>
+
+                            <td>
+                                <?php echo htmlspecialchars($incidencia["tecnic"] ?? ''); ?>
+                            </td>
+
+                            <td>
+                                <?php echo htmlspecialchars($incidencia["tipus"] ?? ''); ?>
+                            </td>
+
+                            <td>
+                                <?php echo htmlspecialchars($incidencia["dataFinalitzacio"] ?? ''); ?>
+                            </td>
+
+                            <td>
+                                <?php echo htmlspecialchars($incidencia["prioritat"] ?? ''); ?>
+                            </td>
+
+                            <td>
+
+                                <a
+                                    href="performanceByIncidence.php?idIncidencia=<?php echo urlencode($incidencia['idIncidencia']); ?>"
+                                    class="btn btn-sm btn-primary"
+                                    aria-label="Entrar a la incidència <?php echo htmlspecialchars($incidencia['idIncidencia']); ?>"
+                                >
+                                    Entrar
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    <?php endforeach; ?>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    <?php else: ?>
+
+        <div class="alert alert-info" role="status">
+            No hi ha incidències registrades.
+        </div>
+
+    <?php endif; ?>
 
 </main>
+
 <?php include '../../structure/logOut.php'; ?>
 <?php include '../../structure/footer.php'; ?>
