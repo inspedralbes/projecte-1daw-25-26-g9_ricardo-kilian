@@ -1,6 +1,4 @@
-<?php include '../../structure/header.php'; ?>
-
-<?php
+<?php include '../../structure/header.php';
 
 $idIncidencia = $_GET['idIncidencia'] ?? null;
 

@@ -1,6 +1,5 @@
-<?php include '../../structure/header.php'; ?>
-
-<?php
+<?php include '../../structure/header.php';
+include '../../structure/adminStructure/navBarAdmin.php'; 
 
 $mysqli = include_once "../../connexio.php";
 
@@ -33,7 +32,6 @@ $tecnics = $resultado->fetch_all(MYSQLI_ASSOC);
 
 <main class="container py-5">
 
-    <?php include '../../structure/adminStructure/navBarAdmin.php'; ?>
 
     <h1 class="text-center fw-bold mb-5">
         Informe de tècnics

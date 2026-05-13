@@ -1,8 +1,8 @@
 <?php include '../../structure/header.php'; ?>
+<?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
 
 <main class="container mt-4">
 
-    <?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
 
     <div class="text-center">
 

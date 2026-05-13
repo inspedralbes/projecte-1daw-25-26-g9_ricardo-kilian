@@ -2,7 +2,7 @@
 
 <main class="container mt-4">
 
-    <div class="row justify-content-center mb-3 ">
+    <div class="row justify-content-center mt-5 mb-3 ">
         <div class="col-10 col-md-6">
             <div class="banner-login">
                 GESTOR D'INCIDÈNCIES
@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center g-4">
+   <div class="row justify-content-center g-4 mt-2">
         <div class="col-10 col-sm-4 col-md-3">
             <a href="./role/admin/admin.php" class="rol-card">
                 <img src="../photos/admin.jpg" class="rol-img" alt="Admin">

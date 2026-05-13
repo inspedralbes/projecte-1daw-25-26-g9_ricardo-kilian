@@ -1,4 +1,5 @@
 <?php include '../../structure/header.php'; ?>
+<?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
 
 <?php
 
@@ -44,7 +45,6 @@ $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
 
 <main class="container mt-5">
 
-    <?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
 
     <h1 class="text-center mb-4">
 

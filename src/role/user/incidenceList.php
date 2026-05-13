@@ -1,4 +1,5 @@
 <?php include '../../structure/header.php';
+include '../../structure/userStructure/navBarUser.php';
 
 $mysqli = include_once "../../connexio.php";
 
@@ -32,7 +33,6 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
         Saltar al contingut principal
     </a>
 
-    <?php include '../../structure/userStructure/navBarUser.php'; ?>
     
     <h1 class="mb-4 text-center">
         Llistat d’incidències

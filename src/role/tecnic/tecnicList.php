@@ -1,4 +1,5 @@
 <?php include '../../structure/header.php'; 
+include '../../structure/tecnicStructure/navBarTecnic.php';
 
 $mysqli = include_once "../../connexio.php";
 
@@ -42,16 +43,18 @@ $sql = "
         ON i.idTipus = tp.idTipus
     LEFT JOIN PRIORITAT pr 
         ON i.idPrioritat = pr.idPrioritat
-    WHERE i.dataFinalitzacio IS NULL;
+    WHERE i.dataFinalitzacio IS NULL
 ";
 
 
 if ($idTecnic) {
 
-    $sql .= " WHERE i.idTecnic = ? ";
+    $sql .= " AND i.idTecnic = ? ";
+
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $idTecnic);
     $stmt->execute();
+
     $resultado = $stmt->get_result();
 
 } else {
@@ -66,7 +69,6 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
 <main class="container mt-5">
 
-    <?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
     
     <?php if (count($incidencias) > 0): ?>
 

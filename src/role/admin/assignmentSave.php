@@ -1,81 +1,194 @@
-<?php include '../../structure/header.php'; 
+<?php include '../../structure/header.php';
+include '../../structure/adminStructure/navBarAdmin.php';
 
 $mysqli = include_once "../../connexio.php";
 
-// Validación básica
-$idIncidencia = $_POST["idIncidencia"] ?? null;
-$idTecnic = $_POST["idTecnic"] ?? null;
-$idTipus = $_POST["idTipus"] ?? null;
-$idPrioritat = $_POST["idPrioritat"] ?? null;
+$idIncidencia = $_GET['idIncidencia'] ?? null;
 
-$success = false;
-$error = null;
-
-if ($idIncidencia && $idTecnic && $idTipus && $idPrioritat) {
-
-    $stmt = $mysqli->prepare("
-        UPDATE INCIDENCIA
-        SET idTecnic = ?,
-            idTipus = ?,
-            idPrioritat = ?
-        WHERE idIncidencia = ?
-    ");
-
-    if ($stmt) {
-
-        $stmt->bind_param( "iiii", $idTecnic, $idTipus, $idPrioritat, $idIncidencia);
-
-        if ($stmt->execute()) {
-            $success = true;
-        } else {
-            $error = "Error al guardar la incidència.";
-        }
-
-        $stmt->close();
-
-    } else {
-        $error = "Error al preparar la consulta.";
-    }
-
-} else {
-    $error = "Falten dades per completar l'actualització.";
+if (!$idIncidencia) {
+    die("ID no válida");
 }
+
+$stmt = $mysqli->prepare("
+    SELECT *
+    FROM INCIDENCIA
+    WHERE idIncidencia = ?
+");
+
+$stmt->bind_param("i", $idIncidencia);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$incidencia = $result->fetch_assoc();
+
+if (!$incidencia) {
+    die("Incidència no trobada");
+}
+
+$tecnics = $mysqli->query("
+    SELECT idTecnic, nom
+    FROM TECNIC
+")->fetch_all(MYSQLI_ASSOC);
+
+$prioritats = $mysqli->query("
+    SELECT idPrioritat, descripcio
+    FROM PRIORITAT
+")->fetch_all(MYSQLI_ASSOC);
+
+$tipus = $mysqli->query("
+    SELECT idTipus, nom
+    FROM TIPUS
+")->fetch_all(MYSQLI_ASSOC);
+
+$departaments = $mysqli->query("
+    SELECT idDepartament, nom
+    FROM DEPARTAMENT
+")->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
 <main class="container mt-5">
 
+
     <div class="row justify-content-center">
 
-        <div class="col-md-8">
+        <div class="col-12 col-md-8 col-lg-5">
 
-            <?php if ($success) ?>
+            <div class="card shadow-sm p-4">
 
-                <div class="alert alert-success text-center shadow-sm">
+                <h1 class="mb-4 text-center">
+                    Assignar incidència
+                </h1>
 
-                    <h4 class="alert-heading">
-                        Incidència actualitzada correctament
-                    </h4>
+                <form action="updateAssignment.php" method="POST">
 
-                    <p class="mb-2">
-                        L'ID de la incidència 
-                        <strong>#<?php echo htmlspecialchars($idIncidencia); ?></strong>
-                        s'ha actualitzat correctament.
-                    </p>
+                    <input
+                        type="hidden"
+                        name="idIncidencia"
+                        value="<?= $incidencia['idIncidencia'] ?>"
+                    >
 
-                    <hr>
+                    <!-- TECNIC -->
+                    <div class="mb-3">
+                        <label for="idTecnic" class="form-label">
+                            Tècnic
+                        </label>
 
-                    <a href="assignment.php?idIncidencia=<?php echo htmlspecialchars($idIncidencia); ?>" 
-                       class="btn btn-primary">
-                        Tornar a la incidència
-                    </a>
+                        <select
+                            name="idTecnic"
+                            id="idTecnic"
+                            class="form-select"
+                            required
+                        >
+                            <option value="">
+                                Selecciona un tècnic
+                            </option>
 
-                    <a href="adminList.php" 
-                       class="btn btn-secondary ms-2">
-                        Veure llistat
-                    </a>
+                            <?php foreach ($tecnics as $t): ?>
 
-                </div>
+                                <option
+                                    value="<?= $t['idTecnic'] ?>"
+                                    <?= $incidencia['idTecnic'] == $t['idTecnic'] ? 'selected' : '' ?>
+                                >
+                                    <?= htmlspecialchars($t['nom']) ?>
+                                </option>
+
+                            <?php endforeach; ?>
+
+                        </select>
+                    </div>
+
+                    <!-- PRIORITAT -->
+                    <div class="mb-3">
+                        <label for="idPrioritat" class="form-label">
+                            Prioritat
+                        </label>
+
+                        <select
+                            name="idPrioritat"
+                            id="idPrioritat"
+                            class="form-select"
+                            required
+                        >
+                            <option value="">
+                                Selecciona prioritat
+                            </option>
+
+                            <?php foreach ($prioritats as $p): ?>
+
+                                <option
+                                    value="<?= $p['idPrioritat'] ?>"
+                                    <?= $incidencia['idPrioritat'] == $p['idPrioritat'] ? 'selected' : '' ?>
+                                >
+                                    <?= htmlspecialchars($p['descripcio']) ?>
+                                </option>
+
+                            <?php endforeach; ?>
+
+                        </select>
+                    </div>
+
+                    <!-- TIPUS -->
+                    <div class="mb-3">
+                        <label for="idTipus" class="form-label">
+                            Tipus
+                        </label>
+
+                        <select
+                            name="idTipus"
+                            id="idTipus"
+                            class="form-select"
+                            required
+                        >
+                            <?php foreach ($tipus as $tp): ?>
+
+                                <option
+                                    value="<?= $tp['idTipus'] ?>"
+                                    <?= $incidencia['idTipus'] == $tp['idTipus'] ? 'selected' : '' ?>
+                                >
+                                    <?= htmlspecialchars($tp['nom']) ?>
+                                </option>
+
+                            <?php endforeach; ?>
+
+                        </select>
+                    </div>
+
+                    <!-- DEPARTAMENT -->
+                    <div class="mb-4">
+                        <label for="idDepartament" class="form-label">
+                            Departament
+                        </label>
+
+                        <select
+                            name="idDepartament"
+                            id="idDepartament"
+                            class="form-select"
+                            required
+                        >
+                            <?php foreach ($departaments as $d): ?>
+
+                                <option
+                                    value="<?= $d['idDepartament'] ?>"
+                                    <?= $incidencia['idDepartament'] == $d['idDepartament'] ? 'selected' : '' ?>
+                                >
+                                    <?= htmlspecialchars($d['nom']) ?>
+                                </option>
+
+                            <?php endforeach; ?>
+
+                        </select>
+                    </div>
+
+                    <div class="d-grid">
+                        <button class="btn btn-success">
+                            Guardar canvis
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
 
         </div>
 

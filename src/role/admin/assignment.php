@@ -1,79 +1,124 @@
-<?php include '../../structure/header.php'; ?>
+<?php include '../../structure/header.php';
+include '../../structure/adminStructure/navBarAdmin.php';
 
-<?php
 $mysqli = include_once "../../connexio.php";
 
-$idIncidencia = $_GET["idIncidencia"];
+$resultado = $mysqli->query("
+    SELECT 
+        i.idIncidencia,
+        i.descripcio,
+        i.data,
+        d.nom AS departament,
+        t.nom AS tecnic,
+        tp.nom AS tipus,
+        p.descripcio AS prioritat
+    FROM INCIDENCIA i
+    LEFT JOIN DEPARTAMENT d 
+        ON i.idDepartament = d.idDepartament
+    LEFT JOIN TECNIC t 
+        ON i.idTecnic = t.idTecnic
+    LEFT JOIN TIPUS tp 
+        ON i.idTipus = tp.idTipus
+    LEFT JOIN PRIORITAT p 
+        ON i.idPrioritat = p.idPrioritat
+    WHERE 
+        i.dataFinalitzacio IS NULL
+        AND i.idTecnic IS NULL
+");
 
-$tecnics = $mysqli->query("SELECT idTecnic, nom FROM TECNIC");
-$tipus = $mysqli->query("SELECT idTipus, nom FROM TIPUS");
-$prioritat = $mysqli->query("SELECT idPrioritat, descripcio FROM PRIORITAT");
+$incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
+
 ?>
 
-<main class="container mt-5">
+<main class="container py-5" id="main-content">
 
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6">
 
-            <h2 class="mb-4 text-center">
-                Assignar incidència #<?php echo $idIncidencia; ?>
-            </h2>
+    <h1 class="text-center fw-bold mb-5">
+        Incidències per assignar
+    </h1>
 
-            <form action="assignmentSave.php" method="POST">
+    <div class="row">
 
-                <input type="hidden" name="idIncidencia" value="<?php echo $idIncidencia; ?>">
+        <?php if (!empty($incidencias)) { ?>
 
-                <!-- Técnic -->
-                <div class="mb-3">
-                    <label class="form-label">Tècnic</label>
-                    <select name="idTecnic" class="form-select" required>
-                        <option value="">--Selecciona tècnic--</option>
-                        <?php while ($tec = $tecnics->fetch_assoc()): ?>
-                            <option value="<?php echo $tec["idTecnic"]; ?>">
-                                <?php echo $tec["nom"]; ?>
-                            </option>
-                        <?php endwhile; ?>
-                    </select>
+            <?php foreach ($incidencias as $incidencia) { ?>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <article class="card border-0 shadow-lg h-100 rounded-4">
+
+                        <div class="card-body d-flex flex-column p-4">
+
+                            <h2 class="h4 fw-bold mb-3">
+                                Incidència #<?= htmlspecialchars($incidencia["idIncidencia"]) ?>
+                            </h2>
+
+                            <p class="text-muted mb-3">
+                                <?= htmlspecialchars($incidencia["descripcio"]) ?>
+                            </p>
+
+                            <p class="mb-2">
+                                <strong>Data:</strong>
+                                <?= htmlspecialchars($incidencia["data"]) ?>
+                            </p>
+
+                            <p class="mb-2">
+                                <strong>Departament:</strong>
+                                <?= htmlspecialchars($incidencia["departament"] ?? '') ?>
+                            </p>
+
+                            <p class="mb-2">
+                                <strong>Tipus:</strong>
+                                <?= htmlspecialchars($incidencia["tipus"] ?? '') ?>
+                            </p>
+
+                            <p class="mb-4">
+                                <strong>Prioritat:</strong>
+                                <?= htmlspecialchars($incidencia["prioritat"] ?? '') ?>
+                            </p>
+
+                            <div class="mt-auto">
+
+                                <a
+                                    href="assignment.php?idIncidencia=<?= urlencode($incidencia["idIncidencia"]) ?>"
+                                    class="btn btn-primary w-100 rounded-pill"
+                                    aria-label="Assignar incidència <?= htmlspecialchars($incidencia["idIncidencia"]) ?>"
+                                >
+                                    Assignar incidència
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
                 </div>
 
-                <!-- Tipus -->
-                <div class="mb-3">
-                    <label class="form-label">Tipus</label>
-                    <select name="idTipus" class="form-select" required>
-                        <option value="">--Selecciona tipus--</option>
-                        <?php while ($ti = $tipus->fetch_assoc()): ?>
-                            <option value="<?php echo $ti["idTipus"]; ?>">
-                                <?php echo $ti["nom"]; ?>
-                            </option>
-                        <?php endwhile; ?>
-                    </select>
+            <?php } ?>
+
+        <?php } else { ?>
+
+            <div class="col-12 text-center mt-5">
+
+                <div
+                    class="alert alert-success text-center shadow-sm"
+                    role="status"
+                >
+
+                    <h2 class="h4 alert-heading">
+                        No hi ha incidències per assignar
+                    </h2>
+
                 </div>
 
-                <!-- Prioritat -->
-                <div class="mb-3">
-                    <label class="form-label">Prioritat</label>
-                    <select name="idPrioritat" class="form-select" required>
-                        <option value="">--Selecciona prioritat--</option>
-                        <?php while ($pr = $prioritat->fetch_assoc()): ?>
-                            <option value="<?php echo $pr["idPrioritat"]; ?>">
-                                <?php echo $pr["descripcio"]; ?>
-                            </option>
-                        <?php endwhile; ?>
-                    </select>
-                </div>
+            </div>
 
-                <!-- Botón -->
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-success">
-                        Guardar asignació
-                    </button>
-                </div>
+        <?php } ?>
 
-            </form>
-
-        </div>
     </div>
 
 </main>
+
 <?php include '../../structure/logOut.php'; ?>
 <?php include '../../structure/footer.php'; ?>

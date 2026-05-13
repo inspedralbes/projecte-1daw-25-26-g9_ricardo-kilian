@@ -1,4 +1,5 @@
 <?php include '../../structure/header.php';
+include '../../structure/tecnicStructure/navBarTecnic.php';
 
 $mysqli = include_once "../../connexio.php";
 
@@ -40,7 +41,6 @@ if (isset($_GET["id"])) {
 
 <main class="container mt-5">
 
-    <?php include '../../structure/tecnicStructure/navBarTecnic.php'; ?>
 
     <h1 class="mb-4 text-center">Filtrar Incidència per ID</h1>
 

@@ -1,9 +1,8 @@
 <?php include '../../structure/header.php'; ?>
+<?php include '../../structure/userStructure/navBarUser.php'; ?>
 
 <main class="container mt-4">
     
-    <?php include '../../structure/userStructure/navBarUser.php'; ?>
-
     <div class="text-center">
         <h1 class="mb-4">PANELL ACCIONS</h1>
 

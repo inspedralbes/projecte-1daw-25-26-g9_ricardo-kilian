@@ -1,4 +1,5 @@
 <?php include '../../structure/header.php'; 
+include '../../structure/adminStructure/navBarAdmin.php'; 
 
 $mysqli = include_once "../../connexio.php";
 
@@ -30,7 +31,6 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
 <main class="container mt-5">
 
-    <?php include '../../structure/adminStructure/navBarAdmin.php'; ?>
 
     <h1 class="mb-4 text-center">Llistat d'Incidències</h1>
 
@@ -70,11 +70,11 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
                     <tr class="<?= $color ?>">
                         <td><?= $incidencia["idIncidencia"] ?></td>
-                        <td><?= $incidencia["descripcio"] ?></td>
+                        <td><?= htmlspecialchars($incidencia["descripcio"]) ?></td>
                         <td><?= $incidencia["data"] ?></td>
-                        <td><?= $incidencia["departament"] ?></td>
+                        <td><?= htmlspecialchars($incidencia["departament"]) ?></td>
                         <td><?= $incidencia["tecnic"] ?></td>
-                        <td><?= $incidencia["tipus"] ?></td>
+                        <td><?= htmlspecialchars($incidencia["tipus"]) ?></td>
                         <td><?= $incidencia["dataFinalitzacio"] ?></td>
                         <td>
                             <span class="<?= $color ?>">
@@ -83,7 +83,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                         </td>
                         <td>
                             <a class="btn btn-sm btn-primary"
-                               href="assignment.php?idIncidencia=<?= $incidencia["idIncidencia"]; ?>">
+                               href="updateAssignment.php?idIncidencia=<?= $incidencia["idIncidencia"]; ?>">
                                Modificar
                             </a>
                         </td>

@@ -1,4 +1,5 @@
 <?php include '../../structure/header.php'; ?>
+<?php include '../../structure/adminStructure/navBarAdmin.php'; ?>
 
 <?php
 
@@ -31,11 +32,12 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
-<main class="container py-5">
+<main class="container py-5" id="main-content">
 
-    <?php include '../../structure/adminStructure/navBarAdmin.php'; ?>
 
-    <h1 class="text-center fw-bold mb-5">Incidències per assignar </h1>
+    <h1 class="text-center fw-bold mb-5">
+        Incidències per assignar
+    </h1>
 
     <div class="row">
 
@@ -45,39 +47,45 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
                 <div class="col-md-6 col-lg-4 mb-4">
 
-                    <div class="card border-0 shadow-lg h-100 rounded-4">
+                    <article class="card border-0 shadow-lg h-100 rounded-4">
 
                         <div class="card-body d-flex flex-column p-4">
 
-                            <h4 class="fw-bold mb-3">
-                                #<?= $incidencia["idIncidencia"] ?>
-                            </h4>
+                            <h2 class="h4 fw-bold mb-3">
+                                Incidència #<?= htmlspecialchars($incidencia["idIncidencia"]) ?>
+                            </h2>
 
                             <p class="text-muted mb-3">
-                                <?= $incidencia["descripcio"] ?>
+                                <?= htmlspecialchars($incidencia["descripcio"]) ?>
                             </p>
 
                             <p class="mb-2">
                                 <strong>Data:</strong>
-                                <?= $incidencia["data"] ?>
+                                <?= htmlspecialchars($incidencia["data"]) ?>
                             </p>
 
                             <p class="mb-2">
                                 <strong>Departament:</strong>
-                                <?= $incidencia["departament"] ?>
+                                <?= htmlspecialchars($incidencia["departament"] ?? '') ?>
                             </p>
 
                             <p class="mb-2">
                                 <strong>Tipus:</strong>
-                                <?= $incidencia["tipus"] ?>
+                                <?= htmlspecialchars($incidencia["tipus"] ?? '') ?>
                             </p>
 
-                         
+                            <p class="mb-4">
+                                <strong>Prioritat:</strong>
+                                <?= htmlspecialchars($incidencia["prioritat"] ?? '') ?>
+                            </p>
 
                             <div class="mt-auto">
 
-                                <a href="assignment.php?idIncidencia=<?= $incidencia["idIncidencia"] ?>"
-                                   class="btn btn-primary w-100 rounded-pill">
+                                <a
+                                    href="assignmentSave.php?idIncidencia=<?= urlencode($incidencia["idIncidencia"]) ?>"
+                                    class="btn btn-primary w-100 rounded-pill"
+                                    aria-label="Assignar incidència <?= htmlspecialchars($incidencia["idIncidencia"]) ?>"
+                                >
                                     Assignar incidència
                                 </a>
 
@@ -85,7 +93,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
                         </div>
 
-                    </div>
+                    </article>
 
                 </div>
 
@@ -95,11 +103,14 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
             <div class="col-12 text-center mt-5">
 
-                <div class="alert alert-success text-center shadow-sm">
+                <div
+                    class="alert alert-success text-center shadow-sm"
+                    role="status"
+                >
 
-                    <h4 class="alert-heading">
+                    <h2 class="h4 alert-heading">
                         No hi ha incidències per assignar
-                    </h4>
+                    </h2>
 
                 </div>
 

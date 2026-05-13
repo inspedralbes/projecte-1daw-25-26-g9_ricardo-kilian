@@ -5,7 +5,6 @@ $descripcio = $_POST["descripcio"];
 $idTipus = $_POST["idTipus"];
 $idDepartament = $_POST["idDepartament"];
 
-
 $sentencia = $mysqli->prepare("INSERT INTO INCIDENCIA (descripcio, idTipus , idDepartament, data) VALUES (?, ? , ?, NOW())");
 $sentencia->bind_param("sii", $descripcio, $idTipus , $idDepartament);
 $sentencia->execute();

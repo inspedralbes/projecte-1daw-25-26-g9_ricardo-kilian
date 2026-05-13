@@ -1,4 +1,5 @@
 <?php include '../../structure/header.php';
+include '../../structure/userStructure/navBarUser.php'; 
 
 $mysqli = include_once "../../connexio.php";
 
@@ -14,7 +15,6 @@ $departaments = $llistatDept->fetch_all(MYSQLI_ASSOC);
         Saltar al contingut principal
     </a>
 
-    <?php include '../../structure/userStructure/navBarUser.php'; ?>
 
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
