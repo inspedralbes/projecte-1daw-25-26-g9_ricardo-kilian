@@ -84,7 +84,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                         <td>
                             <a class="btn btn-sm btn-primary"
                                href="assignment.php?idIncidencia=<?= $incidencia["idIncidencia"]; ?>">
-                               Asignar
+                               Modificar
                             </a>
                         </td>
                     </tr>

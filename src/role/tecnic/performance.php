@@ -66,7 +66,7 @@ if (!$idIncidencia) {
 
                             <label class="form-label">Incidència resolta</label>
                             
-                            <select name="visible" class="form-select">
+                            <select name="resolta" class="form-select">
 
                                 <option value="1">SI</option>
                                 <option value="0">NO</option>
