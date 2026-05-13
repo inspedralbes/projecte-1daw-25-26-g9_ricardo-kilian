@@ -1,21 +1,13 @@
 <?php include '../../structure/header.php'; ?>
+<?php include '../../structure/adminStructure/navBarAdmin.php'; ?>
 
 <main class="container mt-4">
-        <?php include '../../structure/adminStructure/navBarAdmin.php'; ?>
-
-    <div class="row justify-content-center mb-3 ">
-        <div class="col-10 col-md-6">
-            <div class="banner-login">
-                Informs
-            </div>
-        </div>
-    </div>
 
     <div class="row justify-content-center g-4">
-
+        
         <div class="col-10 col-sm-4 col-md-3">
             <a href="informTecnic.php" class="rol-card">
-                <img src="" class="rol-img" alt="Tècnic">
+                <img src="../../photos/tecnic.jpg" class="rol-img" alt="Tècnic">
                 <div class="overlay"></div>
                 <span class="rol-label">TÈCNIC</span>
             </a>
@@ -23,9 +15,9 @@
 
         <div class="col-10 col-sm-4 col-md-3">
             <a href="informDepartament.php" class="rol-card">
-                <img src="" class="rol-img" alt="Usuari">
+                <img src="../../photos/user.jpg" class="rol-img" alt="Departament">
                 <div class="overlay"></div>
-                <span class="rol-label">DEPARTEMNT</span>
+                <span class="rol-label">DEPARTAMENT</span>
             </a>
         </div>
 

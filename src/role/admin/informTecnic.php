@@ -1,37 +1,47 @@
-<?php include '../../structure/header.php';
+<?php 
+include '../../structure/header.php';
 include '../../structure/adminStructure/navBarAdmin.php'; 
 
 $mysqli = include_once "../../connexio.php";
 
 $resultado = $mysqli->query("
-    SELECT 
+    SELECT
         t.nom AS tecnic,
-        COUNT(i.idIncidencia) AS totals,
-        SUM(CASE 
-            WHEN i.dataFinalitzacio IS NOT NULL 
-            THEN 1 
-            ELSE 0 
-        END
-        )AS resoltes,
-        SUM(
-            CASE 
-                WHEN i.dataFinalitzacio IS NULL 
-                THEN 1 
-                ELSE 0 
-            END
-        ) AS pendents
+        i.idIncidencia,
+        i.descripcio AS incidencia,
+        i.data AS dataInici,
+        p.descripcio AS prioritat,
+        COALESCE(SUM(a.temps), 0) AS tempsTotal
+
     FROM TECNIC t
-    LEFT JOIN INCIDENCIA i ON t.idTecnic = i.idTecnic
-    GROUP BY t.idTecnic, t.nom
-    ORDER BY totals DESC
+
+    INNER JOIN INCIDENCIA i 
+        ON t.idTecnic = i.idTecnic
+
+    LEFT JOIN ACTUACIO a 
+        ON i.idIncidencia = a.idIncidencia
+
+    INNER JOIN PRIORITAT p
+        ON i.idPrioritat = p.idPrioritat
+
+    WHERE i.dataFinalitzacio IS NULL
+
+    GROUP BY 
+        t.nom,
+        i.idIncidencia,
+        i.descripcio,
+        i.data,
+        p.descripcio
+
+    ORDER BY 
+        t.nom,
+        FIELD(p.descripcio, 'Alta', 'Mitja', 'Baixa')
 ");
 
-$tecnics = $resultado->fetch_all(MYSQLI_ASSOC);
-
+$incidencies = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <main class="container py-5">
-
 
     <h1 class="text-center fw-bold mb-5">
         Informe de tècnics
@@ -39,55 +49,63 @@ $tecnics = $resultado->fetch_all(MYSQLI_ASSOC);
 
     <div class="row">
 
-        <?php if (!empty($tecnics)) { ?>
+        <?php if (!empty($incidencies)) { ?>
 
-            <?php foreach ($tecnics as $t) { ?>
+            <?php foreach ($incidencies as $i) { ?>
 
                 <div class="col-md-6 col-lg-4 mb-4">
 
-                    <div class="card border-0 shadow-lg rounded-4 h-100">
+                    <div class="card border-0 shadow rounded-4 h-100">
 
-                        <div class="card-body p-4 text-center">
+                        <div class="card-body">
 
-                            <h3 class="fw-bold mb-4">
-                                <?= $t["tecnic"] ?>
-                            </h3>
+                            <h4 class="fw-bold text-primary mb-3">
+                                <?= $i["tecnic"] ?>
+                            </h4>
 
-                            <div class="mb-3">
-                                <h1 class="text-primary">
-                                    <?= $t["totals"] ?>
-                                </h1>
+                            <p>
+                                <strong>Incidència:</strong><br>
+                                <?= $i["incidencia"] ?>
+                            </p>
 
-                                <p class="text-muted">
-                                    Incidències totals
-                                </p>
-                            </div>
+                            <p>
+                                <strong>Data inici:</strong><br>
+                                <?= $i["dataInici"] ?>
+                            </p>
+
+                            <p>
+                                <strong>Prioritat:</strong><br>
+
+                                <?php if ($i["prioritat"] == "Alta") { ?>
+                                    <span class="badge bg-danger">
+                                        Alta
+                                    </span>
+
+                                <?php } elseif ($i["prioritat"] == "Mitja") { ?>
+
+                                    <span class="badge bg-warning text-dark">
+                                        Mitja
+                                    </span>
+
+                                <?php } else { ?>
+
+                                    <span class="badge bg-success">
+                                        Baixa
+                                    </span>
+
+                                <?php } ?>
+                            </p>
 
                             <hr>
 
-                            <div class="d-flex justify-content-around mt-4">
+                            <h5 class="text-center">
 
-                                <div>
-                                    <h2 class="text-success">
-                                        <?= $t["resoltes"] ?>
-                                    </h2>
+                                Temps dedicat:
+                                <span class="fw-bold">
+                                    <?= $i["tempsTotal"] ?> min
+                                </span>
 
-                                    <small class="text-muted">
-                                        Resoltes
-                                    </small>
-                                </div>
-
-                                <div>
-                                    <h2 class="text-danger">
-                                        <?= $t["pendents"] ?>
-                                    </h2>
-
-                                    <small class="text-muted">
-                                        Pendents
-                                    </small>
-                                </div>
-
-                            </div>
+                            </h5>
 
                         </div>
 
@@ -101,9 +119,9 @@ $tecnics = $resultado->fetch_all(MYSQLI_ASSOC);
 
             <div class="col-12">
 
-                <div class="alert alert-info text-center rounded-4 shadow-sm">
+                <div class="alert alert-info text-center">
 
-                    No hi ha informes disponibles
+                    No hi ha incidències pendents
 
                 </div>
 

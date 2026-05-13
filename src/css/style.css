@@ -5,18 +5,13 @@ body {
     flex-direction: column;
 }
 
-main {
-    flex: 1;
-}
-
 .banner-login {
     background-color: #cfe2ff;
     border: 2px solid #9ec5fe;
     border-radius: 5px;
     font-size: 1.3rem;
     font-weight: 600;
-    letter-spacing: 0.05em;
-    padding: 14px 0;
+    padding: 14px;
     text-align: center;
     color: #1a1a2e;
 }
@@ -192,10 +187,4 @@ input:focus {
 
 button:focus {
   outline: 3px solid orange;
-}
-
-@media (min-width: 992px) {
-    .rol-card {
-        height: 350px;
-    }
 }

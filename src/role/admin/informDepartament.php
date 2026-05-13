@@ -1,6 +1,6 @@
-<?php include '../../structure/header.php'; ?>
-
-<?php
+<?php 
+include '../../structure/header.php';
+include '../../structure/adminStructure/navBarAdmin.php';
 
 $mysqli = include_once "../../connexio.php";
 
@@ -9,73 +9,73 @@ $resultado = $mysqli->query("
         d.idDepartament,
         d.nom AS departament,
 
-        COUNT(i.idIncidencia) AS totals,
+        (
+            SELECT COUNT(*)
+            FROM INCIDENCIA i
+            WHERE i.idDepartament = d.idDepartament
+        ) AS totalIncidencies,
 
-        SUM(i.dataFinalitzacio IS NOT NULL) AS resoltes,
+        (
+            SELECT COALESCE(SUM(a.temps), 0)
 
-        SUM(i.dataFinalitzacio IS NULL) AS pendents
+            FROM ACTUACIO a
+
+            INNER JOIN INCIDENCIA i
+                ON a.idIncidencia = i.idIncidencia
+
+            WHERE i.idDepartament = d.idDepartament
+
+        ) AS tempsTotal
 
     FROM DEPARTAMENT d
 
-    LEFT JOIN INCIDENCIA i 
-        ON d.idDepartament = i.idDepartament
-
-    GROUP BY d.idDepartament, d.nom
+    ORDER BY tempsTotal DESC
 ");
 
 $departaments = $resultado->fetch_all(MYSQLI_ASSOC);
-
 ?>
 
-<main class="container py-5">
+<main class="container mt-5">
 
-    <?php include '../../structure/adminStructure/navBarAdmin.php'; ?>
+    <h1 class="text-center mb-5">
+        Consum per departaments
+    </h1>
 
-    <h1 class="text-center fw-bold mb-5">Consum per departaments</h1>
+    <?php if (count($departaments) > 0): ?>
 
-    <div class="row">
+        <div class="row">
 
-        <?php if (!empty($departaments)) { ?>
+            <?php foreach ($departaments as $d): ?>
 
-            <?php foreach ($departaments as $d) { ?>
+                <div class="col-md-6 mb-4">
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
 
-                    <div class="card shadow-lg border-0 rounded-4 h-100">
+                        <div class="card-body">
 
-                        <div class="card-body text-center p-4">
+                            <h4 class="card-title mb-4">
 
-                            <h3 class="fw-bold mb-4">
-                                <?= $d["departament"] ?>
-                            </h3>
+                                <?= htmlspecialchars($d['departament']); ?>
 
-                            <h1 class="text-primary">
-                                <?= $d["totals"] ?>
-                            </h1>
+                            </h4>
 
-                            <p class="text-muted">
-                                Incidències totals
+                            <p class="mb-3">
+
+                                <strong>Incidències reportades:</strong>
+
+                                <?= $d['totalIncidencies']; ?>
+
                             </p>
 
                             <hr>
 
-                            <div class="d-flex justify-content-around mt-3">
+                            <p class="mb-0">
 
-                                <div>
-                                    <h2 class="text-success">
-                                        <?= $d["resoltes"] ?>
-                                    </h2>
-                                    <small>Resoltes</small>
-                                </div>
+                                <strong>Temps total dedicat:</strong>
 
-                                <div>
-                                    <h2 class="text-danger">
-                                        <?= $d["pendents"] ?>
-                                    </h2>
-                                    <small>Pendents</small>
-                                </div>
+                                <?= $d['tempsTotal']; ?> minuts
 
-                            </div>
+                            </p>
 
                         </div>
 
@@ -83,21 +83,19 @@ $departaments = $resultado->fetch_all(MYSQLI_ASSOC);
 
                 </div>
 
-            <?php } ?>
+            <?php endforeach; ?>
 
-        <?php } else { ?>
+        </div>
 
-            <div class="col-12 text-center">
+    <?php else: ?>
 
-                <div class="alert alert-info">
-                    No hi ha dades disponibles
-                </div>
+        <div class="alert alert-warning text-center">
 
-            </div>
+            No hi ha dades disponibles.
 
-        <?php } ?>
+        </div>
 
-    </div>
+    <?php endif; ?>
 
 </main>
 
