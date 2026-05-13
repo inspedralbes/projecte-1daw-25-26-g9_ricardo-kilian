@@ -85,7 +85,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
                             <div class="mt-3">
 
-                                <a href="assignment.php?idIncidencia=<?= urlencode($incidencia["idIncidencia"]) ?>"
+                                <a href="assignmentSave.php?idIncidencia=<?= urlencode($incidencia["idIncidencia"]) ?>"
                                    class="btn btn-primary w-100">
                                     Assignar incidència
                                 </a>
