@@ -27,7 +27,7 @@
             <div class="col-12 col-md-4">
                 <div class="card accion-card h-100 text-center p-4">
                     <h4 class="mb-3">Estadístiques Incidències</h4>
-                    <a href="" class="btn btn-primary">Entrar</a>
+                    <a href="statistics.php" class="btn btn-primary">Entrar</a>
                 </div>
             </div>
 

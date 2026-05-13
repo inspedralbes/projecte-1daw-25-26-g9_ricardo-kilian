@@ -28,14 +28,17 @@ $resultado = $mysqli->query("
         AND i.idTecnic IS NULL
 ");
 
+if (!$resultado) {
+    die("Error en la consulta: " . $mysqli->error);
+}
+
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
-<main class="container py-5" id="main-content">
+<main class="container mt-5">
 
-
-    <h1 class="text-center fw-bold mb-5">
+    <h1 class="text-center mb-4">
         Incidències per assignar
     </h1>
 
@@ -45,47 +48,45 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
             <?php foreach ($incidencias as $incidencia) { ?>
 
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 mb-4">
 
-                    <article class="card border-0 shadow-lg h-100 rounded-4">
+                    <div class="card shadow-sm h-100">
 
-                        <div class="card-body d-flex flex-column p-4">
+                        <div class="card-body">
 
-                            <h2 class="h4 fw-bold mb-3">
-                                Incidència #<?= htmlspecialchars($incidencia["idIncidencia"]) ?>
-                            </h2>
+                            <h5 class="card-title">
+                                <?= htmlspecialchars($incidencia["idIncidencia"]) ?>
+                            </h5>
+
+                            <h5 class="card-title">
+                                Descripcio
+                            </h5>
 
                             <p class="text-muted mb-3">
                                 <?= htmlspecialchars($incidencia["descripcio"]) ?>
                             </p>
 
-                            <p class="mb-2">
+                            <hr>
+
+                            <p class="mb-1">
                                 <strong>Data:</strong>
                                 <?= htmlspecialchars($incidencia["data"]) ?>
                             </p>
 
-                            <p class="mb-2">
+                            <p class="mb-1">
                                 <strong>Departament:</strong>
                                 <?= htmlspecialchars($incidencia["departament"] ?? '') ?>
                             </p>
 
-                            <p class="mb-2">
+                            <p class="mb-3">
                                 <strong>Tipus:</strong>
                                 <?= htmlspecialchars($incidencia["tipus"] ?? '') ?>
                             </p>
 
-                            <p class="mb-4">
-                                <strong>Prioritat:</strong>
-                                <?= htmlspecialchars($incidencia["prioritat"] ?? '') ?>
-                            </p>
+                            <div class="mt-3">
 
-                            <div class="mt-auto">
-
-                                <a
-                                    href="assignmentSave.php?idIncidencia=<?= urlencode($incidencia["idIncidencia"]) ?>"
-                                    class="btn btn-primary w-100 rounded-pill"
-                                    aria-label="Assignar incidència <?= htmlspecialchars($incidencia["idIncidencia"]) ?>"
-                                >
+                                <a href="assignment.php?idIncidencia=<?= urlencode($incidencia["idIncidencia"]) ?>"
+                                   class="btn btn-primary w-100">
                                     Assignar incidència
                                 </a>
 
@@ -93,7 +94,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
                         </div>
 
-                    </article>
+                    </div>
 
                 </div>
 
@@ -101,16 +102,13 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
         <?php } else { ?>
 
-            <div class="col-12 text-center mt-5">
+            <div class="col-12 text-center">
 
-                <div
-                    class="alert alert-success text-center shadow-sm"
-                    role="status"
-                >
+                <div class="alert alert-success shadow-sm">
 
-                    <h2 class="h4 alert-heading">
+                    <h4 class="mb-0">
                         No hi ha incidències per assignar
-                    </h2>
+                    </h4>
 
                 </div>
 
