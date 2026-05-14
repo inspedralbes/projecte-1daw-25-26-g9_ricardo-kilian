@@ -1,4 +1,4 @@
-<?php include '../../structure/header.php'; 
+<?php include '../../structure/header.php';
 include '../../structure/userStructure/navBarUser.php';
 
 $mysqli = include_once "../../connexio.php";
@@ -43,50 +43,87 @@ if (isset($_GET["id"])) {
 
     <h1 class="mb-4 text-center">Filtrar Incidència per ID</h1>
 
-    <!-- 🔍 FORMULARIO -->
     <form method="GET" class="row justify-content-center mb-4">
         <div class="col-md-4">
             <input type="number" name="id" class="form-control" placeholder="Introdueix ID..." required>
         </div>
+
         <div class="col-md-2">
             <button type="submit" class="btn btn-primary w-100">Buscar</button>
         </div>
     </form>
 
     <?php if ($incidencia) { ?>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Descripcio</th>
-                        <th>Data</th>
-                        <th>Departament</th>
-                        <th>Tecnic</th>
-                        <th>Tipus</th>
-                        <th>Finalitzacio</th>
-                        <th>Prioritat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?php echo $incidencia["idIncidencia"] ?></td>
-                        <td><?php echo $incidencia["descripcio"] ?></td>
-                        <td><?php echo $incidencia["data"] ?></td>
-                        <td><?php echo $incidencia["departament"] ?></td>
-                        <td><?php echo $incidencia["tecnic"] ?></td>
-                        <td><?php echo $incidencia["tipus"] ?></td>
-                        <td><?php echo $incidencia["dataFinalitzacio"] ?></td>
-                        <td><?php echo $incidencia["prioritat"] ?></td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8">
+
+                <div class="card shadow-sm">
+
+                    <div class="card-body">
+
+                        <p>
+                            <strong>Descripció:</strong><br>
+                            <?php echo htmlspecialchars($incidencia["descripcio"]); ?>
+                        </p>
+
+                        <hr>
+
+                        <p>
+                            <strong>Data:</strong><br>
+                            <?php echo date("d/m/Y H:i", strtotime($incidencia["data"])); ?>
+                        </p>
+
+                        <p>
+                            <strong>Departament:</strong><br>
+                            <?php echo htmlspecialchars($incidencia["departament"]); ?>
+                        </p>
+
+                        <p>
+                            <strong>Tècnic:</strong><br>
+                            <?php echo htmlspecialchars($incidencia["tecnic"]); ?>
+                        </p>
+
+                        <p>
+                            <strong>Tipus:</strong><br>
+                            <?php echo htmlspecialchars($incidencia["tipus"]); ?>
+                        </p>
+
+                        <p>
+                            <strong>Finalització:</strong><br>
+
+                            <?php
+                            if ($incidencia["dataFinalitzacio"]) {
+                                echo date(
+                                    "d/m/Y",
+                                    strtotime($incidencia["dataFinalitzacio"])
+                                );
+                            } else {
+                                echo "No finalitzada";
+                            }
+                            ?>
+                        </p>
+
+                        <p>
+                            <strong>Prioritat:</strong><br>
+                            <?php echo htmlspecialchars($incidencia["prioritat"]); ?>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     <?php } elseif (isset($_GET["id"])) { ?>
+
         <div class="alert alert-danger text-center">
             No s'ha trobat cap incidència amb aquest ID.
         </div>
+
     <?php } ?>
 
 </main>

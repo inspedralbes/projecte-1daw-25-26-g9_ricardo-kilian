@@ -33,7 +33,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
         Saltar al contingut principal
     </a>
 
-    
+
     <h1 class="mb-4 text-center">
         Llistat d’incidències
     </h1>
@@ -42,10 +42,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
         <div class="table-responsive">
 
-            <table 
-                id="taula-incidencies"
-                class="table table-striped table-hover text-center align-middle"
-            >
+            <table id="taula-incidencies" class="table table-striped table-hover text-center align-middle">
 
                 <caption class="visually-hidden">
                     Taula amb el llistat d’incidències registrades
@@ -68,9 +65,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                 <tbody>
 
                     <?php foreach ($incidencias as $incidencia): ?>
-
                         <tr>
-
                             <td>
                                 <?php echo htmlspecialchars($incidencia["idIncidencia"]); ?>
                             </td>
@@ -96,7 +91,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                             </td>
 
                             <td>
-                                <?php echo htmlspecialchars($incidencia["dataFinalitzacio"] ?? ''); ?>
+                                <?php echo htmlspecialchars($incidencia["dataFinalitzacio"] ? $incidencia["dataFinalitzacio"] : 'No finalitzada');?>
                             </td>
 
                             <td>
@@ -104,25 +99,16 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                             </td>
 
                             <td>
-
-                                <a
-                                    href="performanceByIncidence.php?idIncidencia=<?php echo urlencode($incidencia['idIncidencia']); ?>"
+                                <a href="performanceByIncidence.php?idIncidencia=<?php echo urlencode($incidencia['idIncidencia']); ?>"
                                     class="btn btn-sm btn-primary"
-                                    aria-label="Entrar a la incidència <?php echo htmlspecialchars($incidencia['idIncidencia']); ?>"
-                                >
+                                    aria-label="Entrar a la incidència <?php echo htmlspecialchars($incidencia['idIncidencia']); ?>">
                                     Entrar
                                 </a>
-
                             </td>
-
                         </tr>
-
                     <?php endforeach; ?>
-
                 </tbody>
-
             </table>
-
         </div>
 
     <?php else: ?>

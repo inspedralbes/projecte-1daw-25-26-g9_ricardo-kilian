@@ -7,7 +7,7 @@
         
         <div class="col-10 col-sm-4 col-md-3">
             <a href="informTecnic.php" class="rol-card">
-                <img src="../../photos/tecnic.jpg" class="rol-img" alt="Tècnic">
+                <img src="../../photos/graphic_tecnic.jpg" class="rol-img" alt="Tècnic">
                 <div class="overlay"></div>
                 <span class="rol-label">TÈCNIC</span>
             </a>
@@ -15,7 +15,7 @@
 
         <div class="col-10 col-sm-4 col-md-3">
             <a href="informDepartament.php" class="rol-card">
-                <img src="../../photos/user.jpg" class="rol-img" alt="Departament">
+                <img src="../../photos/graphic_class.jpg" class="rol-img" alt="Departament">
                 <div class="overlay"></div>
                 <span class="rol-label">DEPARTAMENT</span>
             </a>

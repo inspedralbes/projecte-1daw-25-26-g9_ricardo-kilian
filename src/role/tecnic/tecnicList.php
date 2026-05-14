@@ -99,23 +99,14 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                         <tr>
 
                             <td><?php echo $incidencia["idIncidencia"]; ?></td>
-
                             <td><?php echo htmlspecialchars($incidencia["descripcio"]); ?></td>
-
                             <td><?php echo $incidencia["data"]; ?></td>
-
                             <td><?php echo $incidencia["departament"]; ?></td>
-
                             <td><?php echo $incidencia["tecnic"]; ?></td>
-
                             <td><?php echo $incidencia["tipus"]; ?></td>
-
-                            <td>-</td>
-
+                            <td>No finalitzat</td>
                             <td><?php echo $incidencia["descripcioPR"]; ?></td>
-
                             <td>
-
                                 <a 
                                     href="performance.php?idIncidencia=<?php echo $incidencia['idIncidencia']; ?>" 
                                     class="btn btn-sm btn-primary"

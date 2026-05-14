@@ -1,5 +1,4 @@
 body {
-    background-color: #f8f9fa;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -35,7 +34,7 @@ body {
 
 .rol-card {
     position: relative;
-    height: 200px;
+    height: 300px;
     overflow: hidden;
     border-radius: 12px;
     display: flex;
@@ -96,11 +95,6 @@ body {
     border-radius: 50%;
 }
 
-.user-box span {
-    font-weight: 500;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 .user-box-admin {
     display: flex;
     align-items: center;
@@ -110,7 +104,7 @@ body {
     padding: 8px 12px;
     border-radius: 12px;
 
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px solid black;
 }
 
 .user-box-admin img {
@@ -120,7 +114,6 @@ body {
 }
 
 .user-box-admin span {
-    font-weight: 500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -138,11 +131,6 @@ body {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-}
-
-.user-box-tecnic span {
-    font-weight: 500;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .accion-card {
