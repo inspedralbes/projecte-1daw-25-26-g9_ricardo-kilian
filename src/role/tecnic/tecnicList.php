@@ -101,9 +101,9 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                             <td><?php echo $incidencia["idIncidencia"]; ?></td>
                             <td><?php echo htmlspecialchars($incidencia["descripcio"]); ?></td>
                             <td><?php echo $incidencia["data"]; ?></td>
-                            <td><?php echo $incidencia["departament"]; ?></td>
-                            <td><?php echo $incidencia["tecnic"]; ?></td>
-                            <td><?php echo $incidencia["tipus"]; ?></td>
+                            <td><?= !empty($incidencia["departament"]) ? htmlspecialchars($incidencia["departament"]) : "No assignat" ?></td>
+                            <td><?= !empty($incidencia["tecnic"]) ? htmlspecialchars($incidencia["tecnic"]) : "No assignat" ?></td>
+                            <td><?= !empty($incidencia["tipus"]) ?  htmlspecialchars($incidencia["tipus"]) : "No assignat"; ?></td>
                             <td>No finalitzat</td>
                             <td><?php echo $incidencia["descripcioPR"]; ?></td>
                             <td>

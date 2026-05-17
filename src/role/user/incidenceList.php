@@ -79,23 +79,23 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
                             </td>
 
                             <td>
-                                <?php echo htmlspecialchars($incidencia["departament"] ?? ''); ?>
+                                <?= !empty($incidencia["departament"]) ? htmlspecialchars($incidencia["departament"]) : "No assignat" ?>
                             </td>
 
                             <td>
-                                <?php echo htmlspecialchars($incidencia["tecnic"] ?? ''); ?>
+                                <?= !empty($incidencia["tecnic"]) ? htmlspecialchars($incidencia["tecnic"]) : "No assignat" ?>
                             </td>
 
                             <td>
-                                <?php echo htmlspecialchars($incidencia["tipus"] ?? ''); ?>
+                                <?= !empty($incidencia["tipus"]) ? htmlspecialchars($incidencia["tipus"]) : "No assignat" ?>
                             </td>
 
                             <td>
-                                <?php echo htmlspecialchars($incidencia["dataFinalitzacio"] ? $incidencia["dataFinalitzacio"] : 'No finalitzada');?>
+                                <?= !empty($incidencia["dataFinalitzacio"])  ? $incidencia["dataFinalitzacio"] : "No finalitzat" ?>
                             </td>
 
                             <td>
-                                <?php echo htmlspecialchars($incidencia["prioritat"] ?? ''); ?>
+                                <?= !empty($incidencia["prioritat"])   ? $incidencia["prioritat"] : "No assignat" ?>
                             </td>
 
                             <td>

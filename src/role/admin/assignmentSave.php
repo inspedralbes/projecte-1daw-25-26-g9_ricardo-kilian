@@ -130,5 +130,5 @@ $prioritats = $mysqli->query("
     </div>
 
 </main>
-
-<?php include '../../structure/footer.php'; ?>
+<?php include '../../structure/logOut.php';
+include '../../structure/footer.php'; ?>

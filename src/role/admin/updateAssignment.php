@@ -12,9 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $mysqli->prepare("
         UPDATE INCIDENCIA
         SET idTecnic = ?,
-            idPrioritat = ?,
-            idTipus = ?,
-            idDepartament = ?
+            idPrioritat = ?
         WHERE idIncidencia = ?
     ");
 
@@ -23,13 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt->bind_param(
-        "iiiii",
+        "iii",
         $_POST['idTecnic'],
         $_POST['idPrioritat'],
-        $_POST['idTipus'],
-        $_POST['idDepartament'],
         $idIncidencia
-    );
+    );  
 
     if (!$stmt->execute()) {
         die("Error execute UPDATE: " . $stmt->error);
@@ -86,6 +82,8 @@ include '../../structure/adminStructure/navBarAdmin.php';
                     <input type="hidden"
                            name="idIncidencia"
                            value="<?= htmlspecialchars($incidencia['idIncidencia']) ?>">
+                    <input type="hidden" name="idTipus" value="<?= $incidencia['idTipus'] ?>">
+                    <input type="hidden" name="idDepartament" value="<?= $incidencia['idDepartament'] ?>">
 
                     <!-- TÈCNIC -->
                     <div class="mb-3">

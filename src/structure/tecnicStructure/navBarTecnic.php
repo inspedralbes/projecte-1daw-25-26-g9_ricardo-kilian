@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-end">
         <div class="d-flex align-items-center gap-2 bg-warning rounded-3 px-3 py-2 shadow-sm">
-            <span>TÈCNIC</span>
+            <span class="text-white">TÈCNIC</span>
             <img src="../../photos/tecnic.jpg" alt="Tecnic" class="rounded-circle" style="height:40px;width:40px;">
         </div>
     </div>

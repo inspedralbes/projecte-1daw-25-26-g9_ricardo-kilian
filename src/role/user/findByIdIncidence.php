@@ -110,6 +110,15 @@ if (isset($_GET["id"])) {
                             <?php echo htmlspecialchars($incidencia["prioritat"]); ?>
                         </p>
 
+                        <hr>
+                        <p>
+                            <strong>Actuacions:</strong><br>
+                            <a href="performanceByIncidence.php?idIncidencia=<?php echo urlencode($incidencia['idIncidencia']); ?>" 
+                            class="btn btn-primary mt-2">
+                                Entrar
+                            </a>
+                        </p>
+
                     </div>
 
                 </div>
@@ -125,6 +134,10 @@ if (isset($_GET["id"])) {
         </div>
 
     <?php } ?>
+
+    <a href="incidenceList.php" class="btn btn-success w-100 mt-3" >
+        LLISTAR INCIDÈNCIES
+    </a>
 
 </main>
 <?php include '../../structure/logOut.php'; ?>

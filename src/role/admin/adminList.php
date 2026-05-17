@@ -65,7 +65,7 @@ $prioritats = $mysqli->query("SELECT descripcio FROM PRIORITAT");
 
     <form method="GET" class="row mb-4">
 
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
             <select name="departament" class="form-select">
                 <option value="">Tots els departaments</option>
 
@@ -189,17 +189,15 @@ $prioritats = $mysqli->query("SELECT descripcio FROM PRIORITAT");
 
                         <td><?= $incidencia["data"] ?></td>
 
-                        <td><?= htmlspecialchars($incidencia["departament"]) ?></td>
+                        <td><?= !empty($incidencia["departament"]) ? htmlspecialchars($incidencia["departament"]) : "No assignat" ?></td>
 
-                        <td><?= htmlspecialchars($incidencia["tecnic"]) ?></td>
+                        <td><?= !empty($incidencia["tecnic"]) ? htmlspecialchars($incidencia["tecnic"]) : "No assignat" ?></td>
 
-                        <td><?= htmlspecialchars($incidencia["tipus"]) ?></td>
+                        <td><?= !empty($incidencia["tipus"]) ?  htmlspecialchars($incidencia["tipus"]) : "No assignat"; ?></td>
 
                         <td><?= !empty($incidencia["dataFinalitzacio"])  ? $incidencia["dataFinalitzacio"] : "No finalitzat" ?></td>
 
-                        <td>
-                            <?= $incidencia["prioritat"] ?>
-                        </td>
+                        <td><?= !empty($incidencia["prioritat"])   ? $incidencia["prioritat"] : "No assignat" ?></td>
 
                         <td>
                             <a class="btn btn-sm btn-primary"
