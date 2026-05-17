@@ -1,4 +1,4 @@
-<?php include '../../structure/header.php';
+<?php include '../../structure/header.php'; 
 include '../../structure/adminStructure/navBarAdmin.php';
 
 $mysqli = include_once "../../connexio.php";
@@ -35,20 +35,9 @@ $prioritats = $mysqli->query("
     FROM PRIORITAT
 ")->fetch_all(MYSQLI_ASSOC);
 
-$tipus = $mysqli->query("
-    SELECT idTipus, nom
-    FROM TIPUS
-")->fetch_all(MYSQLI_ASSOC);
-
-$departaments = $mysqli->query("
-    SELECT idDepartament, nom
-    FROM DEPARTAMENT
-")->fetch_all(MYSQLI_ASSOC);
-
 ?>
 
 <main class="container mt-5">
-
 
     <div class="row justify-content-center">
 
@@ -68,7 +57,6 @@ $departaments = $mysqli->query("
                         value="<?= $incidencia['idIncidencia'] ?>"
                     >
 
-                    <!-- TECNIC -->
                     <div class="mb-3">
                         <label for="idTecnic" class="form-label">
                             Tècnic
@@ -98,7 +86,6 @@ $departaments = $mysqli->query("
                         </select>
                     </div>
 
-                    <!-- PRIORITAT -->
                     <div class="mb-3">
                         <label for="idPrioritat" class="form-label">
                             Prioritat
@@ -121,58 +108,6 @@ $departaments = $mysqli->query("
                                     <?= $incidencia['idPrioritat'] == $p['idPrioritat'] ? 'selected' : '' ?>
                                 >
                                     <?= htmlspecialchars($p['descripcio']) ?>
-                                </option>
-
-                            <?php endforeach; ?>
-
-                        </select>
-                    </div>
-
-                    <!-- TIPUS -->
-                    <div class="mb-3">
-                        <label for="idTipus" class="form-label">
-                            Tipus
-                        </label>
-
-                        <select
-                            name="idTipus"
-                            id="idTipus"
-                            class="form-select"
-                            required
-                        >
-                            <?php foreach ($tipus as $tp): ?>
-
-                                <option
-                                    value="<?= $tp['idTipus'] ?>"
-                                    <?= $incidencia['idTipus'] == $tp['idTipus'] ? 'selected' : '' ?>
-                                >
-                                    <?= htmlspecialchars($tp['nom']) ?>
-                                </option>
-
-                            <?php endforeach; ?>
-
-                        </select>
-                    </div>
-
-                    <!-- DEPARTAMENT -->
-                    <div class="mb-4">
-                        <label for="idDepartament" class="form-label">
-                            Departament
-                        </label>
-
-                        <select
-                            name="idDepartament"
-                            id="idDepartament"
-                            class="form-select"
-                            required
-                        >
-                            <?php foreach ($departaments as $d): ?>
-
-                                <option
-                                    value="<?= $d['idDepartament'] ?>"
-                                    <?= $incidencia['idDepartament'] == $d['idDepartament'] ? 'selected' : '' ?>
-                                >
-                                    <?= htmlspecialchars($d['nom']) ?>
                                 </option>
 
                             <?php endforeach; ?>
