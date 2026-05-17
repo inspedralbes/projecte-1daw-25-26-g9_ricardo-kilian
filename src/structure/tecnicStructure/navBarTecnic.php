@@ -1,14 +1,14 @@
-<div class="menu-bar text-center">
-    <a href="tecnic.php" class="menu-btn">
+<div class="text-center px-0 py-3 mb-3 border-bottom" style="background-color:#9ec5fe; border-color:#7fb0fc;">
+    <a href="tecnic.php" class="btn btn-light text-primary fw-medium rounded-3 px-3 py-2">
         Menú principal
     </a>
 </div>
 
-<div class="user-bar container-fluid">
+<div class="container-fluid">
     <div class="d-flex justify-content-end">
-        <div class="user-box-tecnic">
-            <span>TÈCNIC</span> 
-            <img src="../../photos/tecnic.jpg" alt="Tecnic">
+        <div class="d-flex align-items-center gap-2 bg-warning rounded-3 px-3 py-2 shadow-sm">
+            <span>TÈCNIC</span>
+            <img src="../../photos/tecnic.jpg" alt="Tecnic" class="rounded-circle" style="height:40px;width:40px;">
         </div>
     </div>
 </div>
