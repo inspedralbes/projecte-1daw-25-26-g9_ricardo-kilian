@@ -2,7 +2,7 @@
 <?php include '../../structure/userStructure/navBarUser.php'; ?>
 <main class="container mt-4">
     <div class="text-center">
-        <h1 class="mb-4">PANELL ACCIONS</h1>
+        <h1 class="mb-4">PANELL PROFESSORAT</h1>
         <div class="row g-4 justify-content-center">
             <div class="col-12 col-md-4">
                 <div class="card translate-card border-0 rounded-4 shadow h-100 text-center p-4">
