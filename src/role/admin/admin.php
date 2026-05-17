@@ -5,7 +5,7 @@
 
 
     <div class="text-center">
-        <h1 class="mb-4">PANELL ACCIONS</h1>
+        <h1 class="mb-4">PANELL ADMIN</h1>
 
         <div class="row g-4 justify-content-center">
              <div class="col-12 col-md-4">
