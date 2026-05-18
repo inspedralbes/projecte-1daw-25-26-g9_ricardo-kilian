@@ -4,7 +4,7 @@
 
 ## Introducció
 
-Per gestionar el projecte GI3P hem utilitzat :contentReference[oaicite:0]{index=0} seguint la metodologia SCRUM.
+Per gestionar el projecte GI3P hem utilitzat taiga  seguint la metodologia SCRUM.
 
 Taiga ens ha servit per organitzar les tasques, dividir el treball en sprints i veure el progrés del projecte.
 ---
@@ -97,6 +97,6 @@ Amb Taiga hem pogut:
 
 ## Conclusions
 
-L’ús de :contentReference[oaicite:1]{index=1} ens ha ajudat a organitzar millor el projecte GI3P.
+L’ús de Taiga ens ha ajudat a organitzar millor el projecte GI3P.
 
 La metodologia SCRUM i els sprints han fet que el treball sigui més ordenat i fàcil de seguir per als dos membres del grup.
