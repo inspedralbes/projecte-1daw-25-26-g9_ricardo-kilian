@@ -26,13 +26,15 @@ Totes les funcionalitats han de ser accessibles mitjançant teclat.
 S’ha implementat un enllaç per saltar directament al contingut principal:
 
 ```html
-<a href="#taula-incidencies" class="visually-hidden-focusable">
-    Saltar al contingut principal
-</a>
+<div class="text-center px-0 py-3 mb-3 border-bottom" style="background-color:#9ec5fe; border-color:#7fb0fc;">
+    <a href="usuari.php" class="btn btn-light text-primary fw-medium rounded-3 px-3 py-2">
+        Menú principal
+    </a>
+</div>
 ```
 
 Aquest element permet:
-- evitar navegar repetidament pels menús,
+- navegar repetidament pel menú,
 - millorar l’experiència d’usuaris amb teclat,
 - facilitar la navegació amb lectors de pantalla.
 
