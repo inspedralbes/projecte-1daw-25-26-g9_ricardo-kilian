@@ -29,11 +29,6 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
 <main class="container mt-5" id="main-content">
 
-    <a href="#taula-incidencies" class="visually-hidden-focusable">
-        Saltar al contingut principal
-    </a>
-
-
     <h1 class="mb-4 text-center">
         Llistat d’incidències
     </h1>
